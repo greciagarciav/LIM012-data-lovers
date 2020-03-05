@@ -1,3 +1,4 @@
+// eslint-disable-next-line import/extensions
 import { example, anotherExample } from '../src/data.js';
 
 
