@@ -1,6 +1,16 @@
 // eslint-disable-next-line import/extensions
 import { example, anotherExample } from '../src/data.js';
 
+describe('allPokemons', () => {
+  it('is a function', () => {
+    expect(typeof allPokemons).toBe('function');
+  });
+
+  it('returns `mainView`', () => {
+    expect(example()).toBe('mainView');
+  });
+});
+
 
 describe('example', () => {
   it('is a function', () => {
