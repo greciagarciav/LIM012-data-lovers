@@ -15,10 +15,12 @@ const allPokemons = (data) => {
   let mainView = '';
   data.pokemon.forEach((obj) => {
     mainView += `
-        <img class="img1" src="${obj.img}"/>
+        <div class="pokemon">
+        <div class="containerImg"><img class="img1" src="${obj.img}"/></div>
         <p>${obj.num}</p> 
         <p>${obj.name}</p>
-        <p>${obj.type}</p>`;
+        <p>${obj.type}</p>
+        </div>`;
   });
   return mainView;
 };

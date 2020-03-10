@@ -5,10 +5,35 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Data Lovers</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <button id="start">START</button>
-  <div id="root"></div>
+  <header >
+    <div class="logoPokemon"></div>
+    <div class="containerMenu">
+      <nav> 
+        <div class="toogleMenu">Menu</div>
+        <ul class="ulMenu">
+          <li><a href="">Home</a> 
+          <li><a href="">League</a> 
+          <li><a href="">Kind</a> 
+          <li><input type="text" class="containerInput">Buscar</li>
+          <li class="toggle"><span class="bars"></span></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+  <main>
+    <div>
+      <button id="start" class="clsButton">START</button>
+    </div>
+    <div class="">
+      <div id="root" class="allPokemons"></div>
+    </div>
+  </main>
+  <footer>
+    <div class="containerFooter"></div>
+  </footer>
   <script src="main.js" type="module"></script>
 </body>
 </html>
