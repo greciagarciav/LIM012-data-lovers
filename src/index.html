@@ -11,15 +11,14 @@
   <header >
     <div class="logoPokemon"></div>
     <div class="containerMenu">
-      <nav> 
-        <div class="toogleMenu">Menu</div>
+      <nav class="menuResponsive"> 
+        <div id="toogleMenu">Menu</div>
         <ul class="ulMenu">
           <li><a href="">Home</a> 
           <li><a href="">League</a> 
           <li><a href="">Kind</a> 
-          <li><input type="text" class="containerInput">Buscar</li>
-          <li class="toggle"><span class="bars"></span></li>
         </ul>
+        <div><input type="text" class="containerInput"></div>
       </nav>
     </div>
   </header>
@@ -29,6 +28,13 @@
     </div>
     <div class="">
       <div id="root" class="allPokemons"></div>
+    </div>
+    <button id="btnModal"> MODAL</button>
+    <div class="containerModal">
+      <div class="modalContent">
+        <span class="close">X</span>
+        <h5>Modal</h5>
+      </div>
     </div>
   </main>
   <footer>

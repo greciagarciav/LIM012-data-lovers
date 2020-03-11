@@ -38,6 +38,7 @@ body{
     list-style: none;
     padding-left: 1em;
     font-size: 1em;
+    display: none;
 }
 li{     
     flex: auto; 
@@ -66,18 +67,32 @@ a.hover{
     }
 }
 
-
 .containerInput{
     margin-top: 0.8rem;
-    width: 50%;
+    width: 80%;
     box-sizing: border-box;
-    padding: 8px 20px;
-    margin: 4px 0 2px;
+    padding: 0.05rem 0.5rem;
+    margin: 0.5em 0 0.5em;
     background: #a2db95;
     border: 2px solid #f1ffee;
     border-radius: 5rem;
     padding-left: 1em;
 }
+#toogleMenu{
+    cursor: pointer;
+}
+    @media screen and (min-width : 768px){
+        #toogleMenu{
+            display : none;
+        }
+    }
+
+/* .menuResponsive{
+    display: flex;
+    justify-content: space-around;
+
+} */
+/* 
 .toggle{
     order: 1;
 }
@@ -106,7 +121,7 @@ a.hover{
 }
 .bars::after{
     top: -5px;
-}
+} */
 
 
 .allPokemons{
@@ -156,4 +171,38 @@ footer{
     padding: 10px;
     background-image: linear-gradient(to left, #24CCAA, #A2DB95);
     color: white; 
+}
+
+.containerModal{
+    display: none; 
+    position: fixed; 
+    z-index: 1;
+    padding-top: 100px;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%; 
+    overflow: auto; 
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0,0.4);
+}
+.containerModal .modalContent{
+    background-color: #fefefe;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid lightgray;
+    border-top: 10px solid #58abb7;
+    width: 60%;
+}
+.containerModal .close{
+    color: #aaaaaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+.containerModal .close:hover,
+.containerModal .close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
 }
