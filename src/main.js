@@ -32,36 +32,13 @@ const allPokemons = (data) => {
 };
 
 btnStart.addEventListener('click', () => {
-  document.getElementById('root').innerHTML = allPokemons(data);
+  const dataHTML = allPokemons(data);
+  document.getElementById('root').innerHTML = dataHTML;
 
-  // const imgClick = document.getElementsByClassName('img1');
-  // for(let i = 0; i < imgClick.length; i++)
-  // {
-  // }
-  // imgClick.forEach((clickMostrar) => {
-  //   clickMostrar.addEventListener('click', () => {
-  //     alert('aqui esta');
-  //   });
-  // });
+  const imgClick = document.getElementsByClassName('img1');
+  for (let i = 0; i < imgClick.length; i += 1) {
+    imgClick[i].addEventListener('click', () => {
+      alert('Mostrar Modal');
+    });
+  }
 });
-
-const btnModal = document.getElementById('btnModal');
-const close = document.getElementById('close');
-
-
-btnModal.addEventListener('click', () => {
-  const containerModal = document.getElementById('containerModal');
-  containerModal.style.display = 'block';
-});
-close.addEventListener('click', () => {
-  const containerModal = document.getElementById('containerModal');
-  containerModal.style.display = 'block';
-});
-
- 
-// const toogleMenu = document.getElementById('toogleMenu');
-// toogleMenu.addEventListener('click', () => {
-//   const ulMenu = document.getElementById('ulMenu');
-//   let menuToogle = document.getElementById('menuToogle');
-//   menuToogle = ulMenu.nextSibling;
-// });
