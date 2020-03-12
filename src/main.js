@@ -35,7 +35,7 @@ btnStart.addEventListener('click', () => {
   const dataHTML = allPokemons(data);
   document.getElementById('root').innerHTML = dataHTML;
 
-  const pokemonClickEvent = document.getElementsByClassName('img1');
+  const pokemonClickEvent = document.getElementsByClassName('pokemon');
   for (let i = 0; i < pokemonClickEvent.length; i += 1) {
     pokemonClickEvent[i].addEventListener('click', () => {
       alert('Mostrar Modal');
