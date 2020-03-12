@@ -9,6 +9,7 @@ import data from './data/pokemon/pokemon.js';
 // import data from './data/worldbank/worldbank.js';
 
 const btnStart = document.getElementById('start');
+const searchPokemon = document.getElementById('searchPokemon');
 
 // eslint-disable-next-line no-shadow
 const allPokemons = (data) => {
@@ -42,3 +43,18 @@ btnStart.addEventListener('click', () => {
     });
   }
 });
+
+searchPokemon.addEventListener('click', () => {
+  const searchOption = document.createElement('li');
+  const contentOption = document.createTextNode('hola mundo');
+  const content = searchOption.appendChild(contentOption);
+  document.body.appendChild(content);
+});
+
+// const search = (searchPokemon) => {
+//   const dataPokemon = data.pokemon;
+//   const dateNames = dataPokemon.map(dateName => `${dateName.name}`);
+//   const filteredName = dateNames.filter(details => details.toLowerCase().includes(searchPokemon.toLowerCase()));
+//   console.log(filteredName);
+// };
+// search('rat');
