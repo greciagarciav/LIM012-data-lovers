@@ -1,4 +1,4 @@
-// import { example } from './data.js';
+import { searchName } from './data.js';
 // import data from './data/injuries/injuries.js';
 // import data from './data/lol/lol.js';
 // import data from './data/patient/patient.js';
@@ -44,17 +44,22 @@ btnStart.addEventListener('click', () => {
   }
 });
 
-searchPokemon.addEventListener('click', () => {
-  const searchOption = document.createElement('li');
-  const contentOption = document.createTextNode('hola mundo');
-  const content = searchOption.appendChild(contentOption);
-  document.body.appendChild(content);
-});
+//
+searchPokemon.addEventListener('keyup', () => {
+  const ulSearch = document.getElementById('ulSearch');
+  ulSearch.innerHTML = '';
 
-// const search = (searchPokemon) => {
-//   const dataPokemon = data.pokemon;
-//   const dateNames = dataPokemon.map(dateName => `${dateName.name}`);
-//   const filteredName = dateNames.filter(details => details.toLowerCase().includes(searchPokemon.toLowerCase()));
-//   console.log(filteredName);
-// };
-// search('rat');
+  if (searchPokemon.value.length === 0) {
+    return false;
+  }
+
+  const filterNameSearch = searchName(searchPokemon.value, data.pokemon);
+  filterNameSearch.forEach((filterName) => {
+    const searchOptionElement = document.createElement('li');
+    const searchOptionText = document.createTextNode(filterName);
+    searchOptionElement.appendChild(searchOptionText);
+    ulSearch.appendChild(searchOptionElement);
+  });
+
+  return true;
+});
