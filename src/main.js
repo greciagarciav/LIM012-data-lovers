@@ -1,3 +1,4 @@
+// eslint-disable-next-line import/extensions
 import { searchName } from './data.js';
 // import data from './data/injuries/injuries.js';
 // import data from './data/lol/lol.js';
