@@ -154,6 +154,7 @@ p{
 
 .img1{
     height: 15rem;
+    cursor: pointer;
 }
 
 .containerImg{
@@ -173,3 +174,285 @@ footer{
     color: white; 
 }
 
+
+/* Modal */
+
+.flex {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* ------------------Modal ------------------*/
+
+.modal {
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 1000;
+  background: rgba(23, 255, 209, 0.5);
+  justify-content: center;
+  display: none;
+  font-size: 0.4em;
+}
+
+.modal-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  position: relative;
+  width: 350px;
+  height: 520px;
+  border-radius: 20px;
+  background-color: #F1FFEE;
+  top: 90px;
+  margin: auto;
+}
+  
+.modal-h3 {
+  margin: 5px 0 0 0;
+}
+
+.modal-h4 {
+  margin: 5px 0 5px 0;
+  font-size: 10.5px;
+}
+
+.modal__block1 {
+  height: 190px;
+  position: absolute;
+  top: -100px;
+}
+
+.txt-modal-title {
+  border-bottom: solid 5px #61ECB3;
+  font-size: 13px;
+  font-weight: 700;
+  padding-bottom: 5px;
+  margin-bottom: 0px;
+}
+ 
+.modalblock-2 {
+  position: absolute;
+  top: 100px;
+}
+
+.modal__block2 {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  max-width: 300px;
+  height: 35px;
+  border-bottom: solid 0.1px;
+  padding-bottom: 8px;
+}
+
+.block-2-sub-container {
+  padding: 0 10px;
+  border-right: solid 1px #847E7E; 
+  height: 30px;
+}
+
+.block2-p-title {
+  font-weight: 700;
+  color: #847E7E;
+}
+.block2-p {
+  font-weight: 700;
+  font-size: 11px;
+}
+
+.modal__block4 {
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 300px;
+  flex-direction: row;
+  border-bottom: solid 0.1px;
+}
+
+.resist-weak-ctn {
+  width: 100px;
+  padding: 0 10px 5px 10px;
+}
+
+.resist-weak-img {
+  width: 20px;
+  height: 20px;
+  padding: 3px;
+}
+  
+.modal__block5 {
+  max-width: 300px;
+  border-bottom: solid 0.1px;
+}
+  
+.movements-container {
+  display: flex;
+}
+.sub-container-movements {
+  padding: 0 5px;
+}
+
+.eps-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-left: 5px;
+}
+
+.background-color-movements {
+  border-radius: 5px;
+  height: 14px;
+  width: 80px;
+  color: white;
+  margin-bottom: 5px;
+  font-size: 11px;
+}
+
+.btn-eps {
+  border-radius: 5px;
+  color: white;
+  background-image: linear-gradient(to left, #24CCAA, #A2DB95);
+}
+
+.bug {
+  background-color: #92C12C; 
+}
+
+.dark {
+  background-color: #626273;
+}
+
+.dragon {
+ background-color: #0872BE;
+}
+
+.electric {
+ background-color: #F6D74F;
+}
+
+.fairy {
+  background-color: #EC98E3;
+}
+
+.fight {
+  background-color: #D64262;
+}
+
+.fire {
+  background-color: #FFA551; 
+}
+
+.flying {
+  background-color: #92ADDF;
+}
+
+.ghost {
+  background-color: #5A6CB6;
+}
+
+.grass {
+  background-color: #5DBB5C;
+}
+
+.ground {
+  background-color: #D77C4D;
+}
+
+.ice {
+  background-color: #7AD2C7;    
+}
+
+.normal {
+  background-color: #959DA2;    
+}
+
+.poison {
+  background-color: #B262CF;    
+}
+
+.psychic {
+  background-color: #F9767B;    
+}
+
+.rock {
+  background-color: #CDBE8E;    
+}
+
+.steel {
+  background-color: #548E9E;    
+}
+
+.water {
+  background-color: #58A0DA;    
+}
+
+.modal__block6 {
+  display: flex;
+  flex-direction: column;
+  max-width: 300px;
+}
+
+.evolution-each-container {
+  margin: 0 10px;   
+}
+
+.evolution-img {
+  height: 100px;
+  width: 100px;
+}
+  
+.evolution-p {
+  margin: 0;
+  font-weight: 700;
+}
+
+.evolution-h4 {
+  margin: 0;
+}
+
+.modal__block1-img {
+  width: 150px;
+}
+  
+.modal__block1-txt {
+  font-weight: 600;
+  margin: 0px;
+  font-size: 12px;
+}
+  
+.modal__h4 {
+  font-size:16px;
+}
+  
+.modal__img-egg {
+  width: 18px;
+  height: 18px;
+}
+
+.close {
+  color: #aaa;
+  font-size: 28px;
+  font-weight: bold;
+  position: absolute;
+  left: 11.3em;
+  top: 0.2em;
+}
+
+.close:hover,
+.close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.container-movements{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
