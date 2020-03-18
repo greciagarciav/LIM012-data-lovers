@@ -31,6 +31,13 @@ body{
     background: linear-gradient(to left, #24CCAA, #A2DB95);
     width: 100%;
 }
+.menuResponsive{
+    display: flex;
+    justify-content: space-evenly;
+}
+.containerUlMenu{
+    width: 30%;
+}
 .ulMenu{
     padding-left: 0;
     margin-top: 0;
@@ -43,6 +50,7 @@ body{
 li{     
     flex: auto; 
     border-bottom: 2px solid rgba(62, 57, 57, 0.384);
+    list-style: none;
 }
 a{
     color: #3E3939;
@@ -57,6 +65,7 @@ a.hover{
 @media screen and (min-width : 768px){
     .ulMenu{
         display: flex;
+        width: 100%;
     }
     li{
         text-align: center;
@@ -65,18 +74,48 @@ a.hover{
     a{
         padding-left: 0;
     }
+    .containerUlMenu{
+        width: 60%;
+    }
+    .containerSearchPokemon{
+        width: 20%;
+    }
+    .containerInput{
+        width: 100%;
+        height: 40%;
+    }
 }
 
+.containerSearchPokemon{
+    /* display: flex;
+    justify-content: center;
+    flex-direction: column; */
+    position: relative;
+}
 .containerInput{
-    margin-top: 0.8rem;
     width: 80%;
+    height: 60%;
     box-sizing: border-box;
     padding: 0.05rem 0.5rem;
-    margin: 0.5em 0 0.5em;
+    margin: 0.5em 1rem 0.5em;
     background: #a2db95;
     border: 2px solid #f1ffee;
     border-radius: 5rem;
     padding-left: 1em;
+}
+.containerSearchNamePokemon{
+    background: #f1ffee;
+    width: 80%;
+    margin:0;
+    margin-left: 1rem;
+    padding-left: 0;
+    border-radius: 1rem;
+    position: absolute;
+    cursor: pointer;
+    z-index: 10;
+}
+.containerSearchNamePokemon li {
+    border-right: none;
 }
 #toogleMenu{
     cursor: pointer;

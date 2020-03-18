@@ -1,4 +1,5 @@
-// import { example } from './data.js';
+// eslint-disable-next-line import/extensions
+import { searchName } from './data.js';
 // import data from './data/injuries/injuries.js';
 // import data from './data/lol/lol.js';
 // import data from './data/patient/patient.js';
@@ -9,6 +10,7 @@ import data from './data/pokemon/pokemon.js';
 // import data from './data/worldbank/worldbank.js';
 
 const btnStart = document.getElementById('start');
+const searchPokemon = document.getElementById('searchPokemon');
 
 // eslint-disable-next-line no-shadow
 const ShowAllPokemons = () => {
@@ -213,3 +215,23 @@ const StartApp = () => {
 
 // Events
 btnStart.addEventListener('click', StartApp);
+
+//
+searchPokemon.addEventListener('keyup', () => {
+  const ulSearch = document.getElementById('ulSearch');
+  ulSearch.innerHTML = '';
+
+  if (searchPokemon.value.length === 0) {
+    return false;
+  }
+
+  const filterNameSearch = searchName(searchPokemon.value, data.pokemon);
+  filterNameSearch.forEach((filterName) => {
+    const searchOptionElement = document.createElement('li');
+    const searchOptionText = document.createTextNode(filterName);
+    searchOptionElement.appendChild(searchOptionText);
+    ulSearch.appendChild(searchOptionElement);
+  });
+
+  return true;
+});
