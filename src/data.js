@@ -4,9 +4,7 @@
 //   return 'example';
 // };
 
-export const anotherExample = () => {
-  return 'OMG';
-};
+export const anotherExample = () => 'OMG';
 
 export const searchName = (searchPokemonName, dataPokemon) => {
   const dateNames = dataPokemon.map((dateName) => `${dateName.name}`);
