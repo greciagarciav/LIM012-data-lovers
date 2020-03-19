@@ -191,15 +191,15 @@ const ClosePokemonDetailWindowEvent = () => {
 };
 
 const GetPokemonById = (id) => {
-  const getDataPokemon = data.pokemon.filter(poke => (poke.num === id))[0];
+  const getDataPokemon = data.pokemon.filter((poke) => (poke.num === id))[0];
   return getDataPokemon;
 };
 
 const AssignCardEventClick = () => {
-  const listPokemon = document.querySelectorAll('.allPokemons div');
+  const listPokemon = document.querySelectorAll('.allPokemons .pokemon');
 
   listPokemon.forEach((itemPokemon) => itemPokemon.addEventListener('click', (event) => {
-    const pokemonId = event.target.parentElement.id;
+    const pokemonId = event.target.closest('.pokemon').id;
     const pokemonClicked = GetPokemonById(pokemonId);
     ShowModalPokemon(pokemonClicked);
     ClosePokemonDetailEvent();
@@ -216,7 +216,17 @@ const StartApp = () => {
 // Events
 btnStart.addEventListener('click', StartApp);
 
-//
+// Search Pokemon
+const closeSearchPokemonWindowEvent = () => {
+  const inputElement = document.getElementById('searchPokemon');
+  const ulSearch = document.getElementById('ulSearch');
+  window.addEventListener('click', (event) => {
+    if (event.target !== inputElement) {
+      ulSearch.innerHTML = '';
+    }
+  });
+};
+
 searchPokemon.addEventListener('keyup', () => {
   const ulSearch = document.getElementById('ulSearch');
   ulSearch.innerHTML = '';
@@ -226,11 +236,21 @@ searchPokemon.addEventListener('keyup', () => {
   }
 
   const filterNameSearch = searchName(searchPokemon.value, data.pokemon);
-  filterNameSearch.forEach((filterName) => {
+  filterNameSearch.forEach((filterPokemon) => {
     const searchOptionElement = document.createElement('li');
-    const searchOptionText = document.createTextNode(filterName);
+    const searchOptionText = document.createTextNode(filterPokemon.name);
     searchOptionElement.appendChild(searchOptionText);
     ulSearch.appendChild(searchOptionElement);
+    searchOptionElement.setAttribute('data-search-num-pokemon', filterPokemon.num);
+    searchOptionElement.addEventListener('click', (event) => {
+      const itemEvent = event.target;
+      const numPokemon = itemEvent.dataset.searchNumPokemon;
+      const pokemonClicked = GetPokemonById(numPokemon);
+      ShowModalPokemon(pokemonClicked);
+      ClosePokemonDetailEvent();
+      ClosePokemonDetailWindowEvent();
+    });
+    closeSearchPokemonWindowEvent();
   });
 
   return true;
