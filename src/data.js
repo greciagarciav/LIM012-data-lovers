@@ -15,3 +15,8 @@ export const searchName = (searchPokemonName, dataPokemon) => {
       .toLowerCase().includes(subStringDateName.toLowerCase()));
   return filteredName.splice(0, 10);
 };
+
+export const FilterPokemonByTypes = (data, kind) => {
+  const arrByType = data.filter((element) => element.type.includes(kind));
+  return arrByType;
+};

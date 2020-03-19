@@ -191,7 +191,7 @@ const ClosePokemonDetailWindowEvent = () => {
 };
 
 const GetPokemonById = (id) => {
-  const getDataPokemon = data.pokemon.filter(poke => (poke.num === id))[0];
+  const getDataPokemon = data.pokemon.filter((poke) => (poke.num === id))[0];
   return getDataPokemon;
 };
 
@@ -215,6 +215,7 @@ const StartApp = () => {
 
 // Events
 btnStart.addEventListener('click', StartApp);
+
 
 //
 searchPokemon.addEventListener('keyup', () => {
