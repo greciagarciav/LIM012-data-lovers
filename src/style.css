@@ -21,93 +21,26 @@ body{
     background-position: center;
     display: flex;
 }
-@media (min-width: 768px) {
-    .logoPokemon{ 
-        height: 10rem;
-        background-size: 30% 70%;
-    }
- }
-.containerMenu{
-    background: linear-gradient(to left, #24CCAA, #A2DB95);
-    width: 100%;
-}
-.menuResponsive{
-    display: flex;
-    justify-content: space-evenly;
-}
-.containerUlMenu{
-    width: 30%;
-}
-.ulMenu{
-    padding-left: 0;
-    margin-top: 0;
-    margin-bottom: 0;
-    list-style: none;
-    padding-left: 1em;
-    font-size: 1em;
-    display: none;
-}
-li{     
-    flex: auto; 
-    border-bottom: 2px solid rgba(62, 57, 57, 0.384);
-    list-style: none;
-}
-a{
-    color: #3E3939;
-    text-decoration: none;
-    line-height: 3;
-    display: block;
-}
-a.hover{
-    background: rgba(201, 204, 36, 0.534);
-}
-
-@media screen and (min-width : 768px){
-    .ulMenu{
-        display: flex;
-        width: 100%;
-    }
-    li{
-        text-align: center;
-        border-right: 2px solid rgba(62, 57, 57, 0.384);
-    }
-    a{
-        padding-left: 0;
-    }
-    .containerUlMenu{
-        width: 60%;
-    }
-    .containerSearchPokemon{
-        width: 20%;
-    }
-    .containerInput{
-        width: 100%;
-        height: 40%;
-    }
-}
 
 .containerSearchPokemon{
-    /* display: flex;
-    justify-content: center;
-    flex-direction: column; */
     position: relative;
 }
 .containerInput{
-    width: 80%;
+    width: 90%;
     height: 60%;
     box-sizing: border-box;
-    padding: 0.05rem 0.5rem;
-    margin: 0.5em 1rem 0.5em;
+    padding: 0.5rem 0.5rem;
+    margin: 0.3em 0rem 0.1em;
     background: #a2db95;
     border: 2px solid #f1ffee;
     border-radius: 5rem;
     padding-left: 1em;
 }
 .containerSearchNamePokemon{
-    background: #f1ffee;
-    width: 80%;
+    background: #a2db95;
+    width: 83%;
     margin:0;
-    margin-left: 1rem;
+    margin-left: 0rem;
     padding-left: 0;
     border-radius: 1rem;
     position: absolute;
@@ -116,15 +49,23 @@ a.hover{
 }
 .containerSearchNamePokemon li {
     border-right: none;
+    padding-left: 1rem;
+}
+.iconAndInputSearch{
+  display: flex;
+}
+.iconSearch{
+    width: 40px;
+    height: 40px;
+    background: url(./img/iconSearch.png);
+    background-size: 40px 38px;
+    background-repeat: no-repeat;
+    margin-top: 0.1em;
 }
 #toogleMenu{
     cursor: pointer;
 }
-    @media screen and (min-width : 768px){
-        #toogleMenu{
-            display : none;
-        }
-    }
+
 .allPokemons{
     margin-left: 4rem;
     margin-right: 4rem;
@@ -481,4 +422,85 @@ footer{
   font-weight: 800;
   font-size: 16px;
   text-align-last:center;
+}
+/* Media query */
+@media (min-width: 768px) {
+  .logoPokemon{ 
+      height: 10rem;
+      background-size: 30% 70%;
+  }
+}
+.containerMenu{
+  background: linear-gradient(to left, #24CCAA, #A2DB95);
+  width: 100%;
+}
+.menuResponsive{
+  display: flex;
+  justify-content: space-evenly;
+}
+.containerUlMenu{
+  width: 30%;
+}
+.ulMenu{
+  padding-left: 0;
+  margin-top: 0;
+  margin-bottom: 0;
+  list-style: none;
+  padding-left: 1em;
+  font-size: 1em;
+  display: none;
+}
+li{     
+  flex: auto; 
+  border-bottom: 2px solid rgba(62, 57, 57, 0.384);
+  list-style: none;
+}
+a{
+  color: #3E3939;
+  text-decoration: none;
+  line-height: 3;
+  display: block;
+}
+a.hover{
+  background: rgba(201, 204, 36, 0.534);
+}
+
+@media screen and (min-width : 768px){
+  .ulMenu{
+      display: flex;
+      width: 100%;
+  }
+  li{
+      text-align: center;
+      border-right: 2px solid rgba(62, 57, 57, 0.384);
+      
+  }
+  a{
+      padding-left: 0;
+  }
+  .containerUlMenu{
+      width: 60%;
+  }
+  .containerSearchPokemon{
+      width: 20%;
+  }
+  .containerInput{
+      width: 100%;
+      padding: 1rem 0.5rem;
+      margin-top: 1em;
+      margin-left: 0;
+  }
+  .iconSearch{
+    width: 70px;
+    height: 50px;
+    margin-top: 0.5em;
+    margin-left: 1rem;
+    background-size: 50px 50px;;
+  }
+  .containerSearchNamePokemon{
+    width: 75%;
+  }
+  #toogleMenu{
+    display : none;
+  }
 }

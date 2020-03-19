@@ -1,5 +1,9 @@
 // eslint-disable-next-line import/extensions
+// eslint-disable-next-line import/no-duplicates
+// eslint-disable-next-line import/extensions
 import { searchName } from './data.js';
+// eslint-disable-next-line import/extensions
+import { FilterPokemonByResistantType } from './data.js';
 // import data from './data/injuries/injuries.js';
 // import data from './data/lol/lol.js';
 // import data from './data/patient/patient.js';
@@ -13,9 +17,9 @@ const btnStart = document.getElementById('start');
 const searchPokemon = document.getElementById('searchPokemon');
 
 // eslint-disable-next-line no-shadow
-const ShowAllPokemons = () => {
+const ShowPokemons = (pokemons) => {
   let mainView = '';
-  data.pokemon.forEach((obj) => {
+  pokemons.forEach((obj) => {
     let imgTypePokemon = '';
     obj.type.forEach((currentPokemonType) => {
       imgTypePokemon += `<img src="./img/types-pokemon/${currentPokemonType}.png"/>`;
@@ -196,10 +200,10 @@ const GetPokemonById = (id) => {
 };
 
 const AssignCardEventClick = () => {
-  const listPokemon = document.querySelectorAll('.allPokemons div');
+  const listPokemon = document.querySelectorAll('.allPokemons .pokemon');
 
   listPokemon.forEach((itemPokemon) => itemPokemon.addEventListener('click', (event) => {
-    const pokemonId = event.target.parentElement.id;
+    const pokemonId = event.target.closest('.pokemon').id;
     const pokemonClicked = GetPokemonById(pokemonId);
     ShowModalPokemon(pokemonClicked);
     ClosePokemonDetailEvent();
@@ -208,7 +212,7 @@ const AssignCardEventClick = () => {
 };
 
 const StartApp = () => {
-  const dataHTML = ShowAllPokemons(data);
+  const dataHTML = ShowPokemons(data.pokemon);
   document.getElementById('root').innerHTML = dataHTML;
   AssignCardEventClick();
 };
@@ -216,8 +220,17 @@ const StartApp = () => {
 // Events
 btnStart.addEventListener('click', StartApp);
 
+// Search Pokemon
+const closeSearchPokemonWindowEvent = () => {
+  const inputElement = document.getElementById('searchPokemon');
+  const ulSearch = document.getElementById('ulSearch');
+  window.addEventListener('click', (event) => {
+    if (event.target !== inputElement) {
+      ulSearch.innerHTML = '';
+    }
+  });
+};
 
-//
 searchPokemon.addEventListener('keyup', () => {
   const ulSearch = document.getElementById('ulSearch');
   ulSearch.innerHTML = '';
@@ -227,12 +240,31 @@ searchPokemon.addEventListener('keyup', () => {
   }
 
   const filterNameSearch = searchName(searchPokemon.value, data.pokemon);
-  filterNameSearch.forEach((filterName) => {
+  filterNameSearch.forEach((filterPokemon) => {
     const searchOptionElement = document.createElement('li');
-    const searchOptionText = document.createTextNode(filterName);
+    const searchOptionText = document.createTextNode(filterPokemon.name);
     searchOptionElement.appendChild(searchOptionText);
     ulSearch.appendChild(searchOptionElement);
+    searchOptionElement.setAttribute('data-search-num-pokemon', filterPokemon.num);
+    searchOptionElement.addEventListener('click', (event) => {
+      const itemEvent = event.target;
+      const numPokemon = itemEvent.dataset.searchNumPokemon;
+      const pokemonClicked = GetPokemonById(numPokemon);
+      ShowModalPokemon(pokemonClicked);
+      ClosePokemonDetailEvent();
+      ClosePokemonDetailWindowEvent();
+    });
+    closeSearchPokemonWindowEvent();
   });
 
   return true;
+});
+
+const typeSelect = document.getElementById('pokemon-types');
+typeSelect.addEventListener('change', (event) => {
+  const resistantType = event.target.value;
+  let listTypePokemon = [];
+  listTypePokemon = FilterPokemonByResistantType(data.pokemon, resistantType);
+  document.getElementById('root').innerHTML = ShowPokemons(listTypePokemon);
+  AssignCardEventClick();
 });
