@@ -13,3 +13,8 @@ export const searchName = (searchPokemonName, dataPokemon) => {
       .toLowerCase() === searchPokemonName.toLowerCase());
   return filteredName.splice(0, 10);
 };
+
+export const FilterPokemonByResistantType = (data, typeResistant) => {
+  const arrByType = data.filter((element) => element.resistant.includes(typeResistant.toLowerCase()));
+  return arrByType;
+};

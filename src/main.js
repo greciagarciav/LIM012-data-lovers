@@ -1,5 +1,9 @@
 // eslint-disable-next-line import/extensions
+// eslint-disable-next-line import/no-duplicates
+// eslint-disable-next-line import/extensions
 import { searchName } from './data.js';
+// eslint-disable-next-line import/extensions
+import { FilterPokemonByResistantType } from './data.js';
 // import data from './data/injuries/injuries.js';
 // import data from './data/lol/lol.js';
 // import data from './data/patient/patient.js';
@@ -13,9 +17,9 @@ const btnStart = document.getElementById('start');
 const searchPokemon = document.getElementById('searchPokemon');
 
 // eslint-disable-next-line no-shadow
-const ShowAllPokemons = () => {
+const ShowPokemons = (pokemons) => {
   let mainView = '';
-  data.pokemon.forEach((obj) => {
+  pokemons.forEach((obj) => {
     let imgTypePokemon = '';
     obj.type.forEach((currentPokemonType) => {
       imgTypePokemon += `<img src="./img/types-pokemon/${currentPokemonType}.png"/>`;
@@ -208,7 +212,7 @@ const AssignCardEventClick = () => {
 };
 
 const StartApp = () => {
-  const dataHTML = ShowAllPokemons(data);
+  const dataHTML = ShowPokemons(data.pokemon);
   document.getElementById('root').innerHTML = dataHTML;
   AssignCardEventClick();
 };
@@ -254,4 +258,13 @@ searchPokemon.addEventListener('keyup', () => {
   });
 
   return true;
+});
+
+const typeSelect = document.getElementById('pokemon-types');
+typeSelect.addEventListener('change', (event) => {
+  const resistantType = event.target.value;
+  let listTypePokemon = [];
+  listTypePokemon = FilterPokemonByResistantType(data.pokemon, resistantType);
+  document.getElementById('root').innerHTML = ShowPokemons(listTypePokemon);
+  AssignCardEventClick();
 });

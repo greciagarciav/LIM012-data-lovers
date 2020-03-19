@@ -333,6 +333,10 @@ footer{
   background-color: #58A0DA;    
 }
 
+.txt-white {
+  color: white;
+  font-weight: 600;
+}
 .modal__block6 {
   display: flex;
   flex-direction: column;
@@ -398,6 +402,27 @@ footer{
   justify-content: center;
 }
 
+/* selects filters */
+.selects-filters-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  margin: 20px;
+}
+
+.select-filter {
+  width: 250px;
+  height: 40px;
+  background-color: #DAF5D4;
+  color: #3E3939;
+  margin: 10px;
+  padding: 1%;
+  border-radius: 17px;
+  border: 1px solid #3E3939;
+  font-weight: 800;
+  font-size: 16px;
+  text-align-last:center;
+}
 /* Media query */
 @media (min-width: 768px) {
   .logoPokemon{ 
