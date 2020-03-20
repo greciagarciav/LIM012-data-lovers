@@ -7,6 +7,12 @@ body{
     background-color: #f1ffee; 
 }
 
+.sticky {
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
+
 .containerLogoPokemon{
     padding-left: 0;
 }
@@ -437,6 +443,7 @@ footer{
 .containerMenu{
   background: linear-gradient(to left, #24CCAA, #A2DB95);
   width: 100%;
+  overflow: hidden;
 }
 .menuResponsive{
   display: flex;

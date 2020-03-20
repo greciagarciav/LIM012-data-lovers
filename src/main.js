@@ -1,17 +1,23 @@
-// eslint-disable-next-line import/extensions
-// eslint-disable-next-line import/no-duplicates
-// eslint-disable-next-line import/extensions
+/* eslint-disable import/extensions */
+/* eslint-disable import/no-duplicates */
 import { searchName } from './data.js';
-// eslint-disable-next-line import/extensions
 import { FilterPokemonByResistantType } from './data.js';
-// import data from './data/injuries/injuries.js';
-// import data from './data/lol/lol.js';
-// import data from './data/patient/patient.js';
-// eslint-disable-next-line import/extensions
+import { orderedMa } from './data.js';
+import { orderedMe } from './data.js';
 import data from './data/pokemon/pokemon.js';
-// import data from './data/rickandmorty/rickandmorty.js';
-// import data from './data/steam/steam.js';
-// import data from './data/worldbank/worldbank.js';
+
+const navbar = document.getElementById('navbar');
+const sticky = navbar.offsetTop;
+
+const stickyNavbar = () => {
+  if (window.pageYOffset >= sticky) {
+    navbar.classList.add('sticky');
+  } else {
+    navbar.classList.remove('sticky');
+  }
+};
+
+window.onscroll = () => { stickyNavbar() };
 
 const btnStart = document.getElementById('start');
 const searchPokemon = document.getElementById('searchPokemon');
@@ -87,6 +93,13 @@ const Movements = (pokemon) => {
 
 const Evolution = (pokemon) => {
   let templateEvolution = '';
+  if (pokemon.evolution['next-evolution'] === undefined && pokemon.evolution['prev-evolution'] === undefined) {
+    templateEvolution += `
+  <div class="evolution-each-container">
+    <h4 class="">This pokemon is not part of an evolutionary line</h4>    
+  </div>
+  `;
+  }
   if (pokemon.evolution['next-evolution'] !== undefined) {
     templateEvolution += `
   <div class="evolution-each-container">
@@ -275,4 +288,19 @@ typeSelect.addEventListener('change', (event) => {
   listTypePokemon = FilterPokemonByResistantType(data.pokemon, resistantType);
   document.getElementById('root').innerHTML = ShowPokemons(listTypePokemon);
   AssignCardEventClick();
+});
+
+const orderSelect = document.getElementById('pokemon-order');
+orderSelect.addEventListener('change', (event) => {
+  const orderType = event.target.value;
+  let listOrderPokemon = [];
+  if (orderType === 'desc') {
+    listOrderPokemon = orderedMa(data.pokemon, orderType);
+    document.getElementById('root').innerHTML = ShowPokemons(listOrderPokemon);
+    AssignCardEventClick();
+  } else if (orderType === 'asc') {
+    listOrderPokemon = orderedMe(data.pokemon, orderType);
+    document.getElementById('root').innerHTML = ShowPokemons(listOrderPokemon);
+    AssignCardEventClick();
+  }
 });

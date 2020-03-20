@@ -1,11 +1,7 @@
-// eslint-disable-next-line import/extensions
+/* eslint-disable import/extensions */
+/* eslint-disable import/no-duplicates */
 import { searchName } from '../src/data.js';
-
-describe('searchName', () => {
-  it('is a function', () => {
-    expect(typeof searchName).toBe('function');
-  });
-});
+import { FilterPokemonByResistantType } from '../src/data.js';
 
 // Test de carga de datos en el buscador
 const data = [{
@@ -201,7 +197,7 @@ const data = [{
   },
 }];
 
-const outputSearchName = [{
+const output = [{
   num: '001',
   name: 'bulbasaur',
   generation: {
@@ -395,7 +391,19 @@ const outputSearchName = [{
 }];
 
 describe('searchName', () => {
+  it('is a function', () => {
+    expect(typeof searchName).toBe('function');
+  });
   it('debería retornar un array de pokemons cuyo nombre empiecen con b', () => {
-    expect(searchName('b', data)).toEqual(outputSearchName);
+    expect(searchName('b', data)).toEqual(output);
+  });
+});
+
+describe('FilterPokemonByResistantType', () => {
+  it('is a function', () => {
+    expect(typeof FilterPokemonByResistantType).toBe('function');
+  });
+  it('debería retornar un array de pokemons cuya resistencia a un elemento sea water', () => {
+    expect(FilterPokemonByResistantType(data, 'water')).toEqual(output);
   });
 });
