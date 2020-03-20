@@ -22,3 +22,13 @@ export const orderedMe = (data) => data.sort((element1, element2) => {
   const orderedResultMe = element1.resistant.length > element2.resistant.length ? 1 : element2.resistant.length > element1.resistant.length ? -1 : 0;
   return orderedResultMe;
 });
+export const calculateEPS = (energy, move) => {
+  let eachEps = '';
+  energy.forEach((itemEnergy) => {
+    move.forEach((itemMove) => {
+      eachEps += (itemEnergy * itemMove);
+    });
+  });
+  console.log(eachEps);
+};
+calculateEPS([1, 1], [2, 2]);
