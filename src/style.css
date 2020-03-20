@@ -248,11 +248,15 @@ footer{
 
 .background-color-movements {
   border-radius: 5px;
-  height: 14px;
+  /* height: 14px; */
   width: 80px;
   color: white;
   margin-bottom: 5px;
   font-size: 11px;
+}
+
+.epsMovement {
+  display: none;
 }
 
 .btn-eps {

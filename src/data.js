@@ -18,3 +18,14 @@ export const FilterPokemonByResistantType = (data, typeResistant) => {
   const arrByType = data.filter((element) => element.resistant.includes(typeResistant.toLowerCase()));
   return arrByType;
 };
+
+export const calculateEPS = (energy, move) => {
+  let eachEps = '';
+  energy.forEach((itemEnergy) => {
+    move.forEach((itemMove) => {
+      eachEps += (itemEnergy * itemMove);
+    });
+  });
+  console.log(eachEps);
+};
+calculateEPS([1, 1], [2, 2]);

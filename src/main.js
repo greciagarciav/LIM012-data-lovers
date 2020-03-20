@@ -65,10 +65,10 @@ const Movements = (pokemon) => {
   let quickMoves = '';
   let specialAttacks = '';
   pokemon['quick-move'].forEach((quickMove) => {
-    quickMoves += `<p class="${quickMove.type} background-color-movements">${quickMove.name}</p>`;
+    quickMoves += `<p class="${quickMove.type} background-color-movements">${quickMove.name} <span class="epsMovement">${(quickMove.energy / quickMove['move-duration-seg']).toFixed(1)}</span></p>`;
   });
   pokemon['special-attack'].forEach((specialAttack) => {
-    specialAttacks += `<p class="${specialAttack.type} background-color-movements">${specialAttack.name}</p>`;
+    specialAttacks += `<p class="${specialAttack.type} background-color-movements">${specialAttack.name} <span class="epsMovement">${(specialAttack.energy / specialAttack['move-duration-seg']).toFixed(1)}</span></p>`;
   });
   templateMovements += `
   <div class= "container-movements">
@@ -155,7 +155,7 @@ const GetInfoModalHtml = (pokeId) => {
           <div class='movements-container'>
             ${Movements(pokeId)}
             <div class="eps-container">
-              <button class="btn-eps">GET</button>
+              <button id="btn-getEps" class="btn-eps">GET</button>
               <span>*Get the EPS</span>
             </div>
           </div>
@@ -175,6 +175,14 @@ const GetInfoModalHtml = (pokeId) => {
 const ShowModalPokemon = (pokemon) => {
   const modal = document.getElementById('modal');
   modal.innerHTML = GetInfoModalHtml(pokemon);
+  const getEps = document.getElementById('btn-getEps');
+  getEps.addEventListener('click', () => {
+    const epsMovement = document.querySelectorAll('.epsMovement');
+    epsMovement.forEach((eps) => {
+      const epsElement = eps;
+      epsElement.style.display = 'block';
+    });
+  });
   modal.style.display = 'block';
 };
 
