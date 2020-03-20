@@ -29,10 +29,11 @@ body{
 }
 
 .containerSearchPokemon{
-    position: relative;
+    /* position: relative; */
+    font-size: 22px;
 }
 .containerInput{
-    width: 90%;
+    width: 70%;
     height: 60%;
     box-sizing: border-box;
     padding: 0.5rem 0.5rem;
@@ -44,7 +45,7 @@ body{
 }
 .containerSearchNamePokemon{
     background: #a2db95;
-    width: 83%;
+    width: 53%;
     margin:0;
     margin-left: 0rem;
     padding-left: 0;
@@ -139,7 +140,7 @@ footer{
   left: 0;
   top: 0;
   z-index: 1000;
-  background: rgba(23, 255, 209, 0.5);
+  background-color: rgba(0,0,0,0.4);
   justify-content: center;
   display: none;
   font-size: 0.4em;
@@ -493,13 +494,14 @@ a.hover{
       width: 60%;
   }
   .containerSearchPokemon{
-      width: 20%;
+      width: 25%;
   }
   .containerInput{
       width: 100%;
       padding: 1rem 0.5rem;
       margin-top: 1em;
       margin-left: 0;
+      position: relative;
   }
   .iconSearch{
     width: 70px;
@@ -509,7 +511,7 @@ a.hover{
     background-size: 50px 50px;;
   }
   .containerSearchNamePokemon{
-    width: 75%;
+    width: 20%;
   }
   #toogleMenu{
     display : none;
