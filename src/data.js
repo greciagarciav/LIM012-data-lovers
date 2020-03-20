@@ -1,11 +1,5 @@
-// estas funciones son de ejemplo
-
-// export const example = () => {
-//   return 'example';
-// };
-
-
-export const anotherExample = () => 'OMG';
+/* eslint-disable no-nested-ternary */
+/* eslint-disable max-len */
 
 export const searchName = (searchPokemonName, dataPokemon) => {
   const filteredName = dataPokemon
@@ -18,3 +12,13 @@ export const FilterPokemonByResistantType = (data, typeResistant) => {
   const arrByType = data.filter((element) => element.resistant.includes(typeResistant.toLowerCase()));
   return arrByType;
 };
+
+export const orderedMa = (data) => data.sort((element1, element2) => {
+  const orderedResultMa = element1.resistant.length < element2.resistant.length ? 1 : element2.resistant.length < element1.resistant.length ? -1 : 0;
+  return orderedResultMa;
+});
+
+export const orderedMe = (data) => data.sort((element1, element2) => {
+  const orderedResultMe = element1.resistant.length > element2.resistant.length ? 1 : element2.resistant.length > element1.resistant.length ? -1 : 0;
+  return orderedResultMe;
+});

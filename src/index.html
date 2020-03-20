@@ -8,9 +8,9 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <header >
+  <header>
     <div class="logoPokemon"></div>
-    <div class="containerMenu">
+    <div id="navbar" class="containerMenu">
       <nav class="menuResponsive"> 
         <div class="containerUlMenu">
           <div id="toogleMenu">Menu</div>
@@ -31,7 +31,7 @@
       </nav>
     </div>
   </header>
-  <main>
+  <main class="content">
       <div class="selects-filters-container">
           <!--Listado de pokemones por tipos-->
           <div id="">
@@ -58,12 +58,12 @@
             </select>
           </div>
           <div id="">
-              <select id="" class="select-filter">
+              <select id="pokemon-order" class="select-filter">
                 <option disabled selected>Sort by</option>
-                <option value="desc"> > resistance</option>
-                <option value="asc"> < resistance</option>
+                <option value="desc"> max resistance</option>
+                <option value="asc"> min resistance</option>
                 <option value="0">A-Z</option>
-                <option value="1">ZA</option>
+                <option value="1">Z-A</option>
                 <option value="">evolution</option>
               </select>
             </div>
