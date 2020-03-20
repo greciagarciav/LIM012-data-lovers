@@ -4,6 +4,7 @@ import { searchName } from './data.js';
 import { FilterPokemonByResistantType } from './data.js';
 import { orderedMa } from './data.js';
 import { orderedMe } from './data.js';
+import { calculateEPS } from './data.js';
 import data from './data/pokemon/pokemon.js';
 
 const navbar = document.getElementById('navbar');
@@ -17,7 +18,7 @@ const stickyNavbar = () => {
   }
 };
 
-window.onscroll = () => { stickyNavbar() };
+window.onscroll = () => { stickyNavbar(); };
 
 const btnStart = document.getElementById('start');
 const searchPokemon = document.getElementById('searchPokemon');
@@ -168,6 +169,10 @@ const GetInfoModalHtml = (pokeId) => {
           <div class='movements-container'>
             ${Movements(pokeId)}
             <div class="eps-container">
+              <div id="averageEps">
+                <h4 class="modal-h4">Promedio EPS total</h4>
+                <h3 class="epsNumber">${calculateEPS(pokeId)}</h3>
+              </div>
               <button id="btn-getEps" class="btn-eps">GET</button>
               <span>*Get the EPS</span>
             </div>
@@ -195,6 +200,8 @@ const ShowModalPokemon = (pokemon) => {
       const epsElement = eps;
       epsElement.style.display = 'block';
     });
+    const averageEps = document.getElementById('averageEps');
+    averageEps.style.display = 'block';
   });
   modal.style.display = 'block';
 };

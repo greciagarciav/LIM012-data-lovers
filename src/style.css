@@ -251,10 +251,14 @@ footer{
   align-items: center;
   padding-left: 5px;
 }
+.eps-container h4{
+  margin-top: 0;
+  padding-top: 0;
+}
+
 
 .background-color-movements {
   border-radius: 5px;
-  /* height: 14px; */
   width: 80px;
   color: white;
   margin-bottom: 5px;
@@ -263,6 +267,22 @@ footer{
 
 .epsMovement {
   display: none;
+}
+
+#averageEps{
+  display: none;
+}
+.epsNumber{
+  border-radius: 5px;
+  width: 40px;
+  height: 19px;
+  color: white;
+  padding-top: 0.3rem;
+  margin-bottom: 0.9rem;
+  margin-top: 1rem;
+  margin-left: 1.8rem;
+  font-size: 0.8rem;
+  background-color: #eccb21;
 }
 
 .btn-eps {
