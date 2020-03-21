@@ -1,9 +1,4 @@
-/* eslint-disable import/extensions */
-/* eslint-disable import/no-duplicates */
-import { searchName } from './data.js';
-import { FilterPokemonByResistantType } from './data.js';
-import { orderedMa } from './data.js';
-import { orderedMe } from './data.js';
+import { searchName, FilterPokemonByResistantType, ordered, calculateEPS } from './data.js';
 import data from './data/pokemon/pokemon.js';
 
 // Sticky Menu Navbar
@@ -188,6 +183,10 @@ const GetInfoModalHtml = (pokeId) => {
           <div class='movements-container'>
             ${Movements(pokeId)}
             <div class="eps-container">
+              <div id="averageEps">
+                <h4 class="modal-h4">Total EPS average</h4>
+                <h3 class="epsNumber">${calculateEPS(pokeId)}</h3>
+              </div>
               <button id="btn-getEps" class="btn-eps">GET</button>
               <span>*Get the EPS</span>
             </div>
@@ -215,6 +214,8 @@ const ShowModalPokemon = (pokemon) => {
       const epsElement = eps;
       epsElement.style.display = 'block';
     });
+    const averageEps = document.getElementById('averageEps');
+    averageEps.style.display = 'block';
   });
   modal.style.display = 'block';
 };
@@ -315,11 +316,11 @@ orderSelect.addEventListener('change', (event) => {
   const orderType = event.target.value;
   let listOrderPokemon = [];
   if (orderType === 'desc') {
-    listOrderPokemon = orderedMa(data.pokemon, orderType);
+    listOrderPokemon = ordered(data.pokemon, orderType);
     document.getElementById('root').innerHTML = ShowPokemons(listOrderPokemon);
     AssignCardEventClick();
   } else if (orderType === 'asc') {
-    listOrderPokemon = orderedMe(data.pokemon, orderType);
+    listOrderPokemon = ordered(data.pokemon, orderType).reverse();
     document.getElementById('root').innerHTML = ShowPokemons(listOrderPokemon);
     AssignCardEventClick();
   }
