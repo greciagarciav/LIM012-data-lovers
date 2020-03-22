@@ -1,8 +1,4 @@
-/* eslint-disable import/extensions */
-/* eslint-disable import/no-duplicates */
-import { searchName } from '../src/data.js';
-import { FilterPokemonByResistantType } from '../src/data.js';
-import { calculateEPS } from '../src/data.js';
+import { searchName, FilterPokemonByResistantType, calculateEPS, ordered } from '../src/data.js';
 
 // Test de carga de datos en el buscador
 const data = [{
@@ -490,6 +486,100 @@ const dataPokemon = [{
   },
 }];
 
+const dataOrder = [{
+  num: '250',
+  name: 'ho-oh',
+  generation: {
+    num: 'generation ii',
+    name: 'johto',
+  },
+  resistant: [
+    'fighting',
+    'bug',
+    'grass',
+    'steel',
+    'fire',
+    'fairy',
+  ],
+},
+{
+  num: '248',
+  name: 'tyranitar',
+  generation: {
+    num: 'generation ii',
+    name: 'johto',
+  },
+  resistant: [
+    'psychic',
+    'dark',
+    'ghost',
+    'fire',
+    'poison',
+    'flying',
+    'normal',
+  ],
+},
+{
+  num: '056',
+  name: 'mankey',
+  generation: {
+    num: 'generation i',
+    name: 'kanto',
+  },
+  resistant: [
+    'bug',
+    'rock',
+    'dark',
+  ],
+}];
+
+const outputOrderMax = [{
+  num: '248',
+  name: 'tyranitar',
+  generation: {
+    num: 'generation ii',
+    name: 'johto',
+  },
+  resistant: [
+    'psychic',
+    'dark',
+    'ghost',
+    'fire',
+    'poison',
+    'flying',
+    'normal',
+  ],
+},
+{
+  num: '250',
+  name: 'ho-oh',
+  generation: {
+    num: 'generation ii',
+    name: 'johto',
+  },
+  resistant: [
+    'fighting',
+    'bug',
+    'grass',
+    'steel',
+    'fire',
+    'fairy',
+  ],
+},
+{
+  num: '056',
+  name: 'mankey',
+  generation: {
+    num: 'generation i',
+    name: 'kanto',
+  },
+  resistant: [
+    'bug',
+    'rock',
+    'dark',
+  ],
+}];
+
 describe('searchName', () => {
   it('is a function', () => {
     expect(typeof searchName).toBe('function');
@@ -514,5 +604,14 @@ describe('calculateEPS', () => {
   });
   it('debería retornar un numero con el promedio del Eps', () => {
     expect(calculateEPS(dataPokemon[0])).toEqual('-7.3');
+  });
+});
+
+describe('ordered', () => {
+  it('is a function', () => {
+    expect(typeof ordered).toBe('function');
+  });
+  it('debería retornar un array ordenado de pokemons de mayor nivel de resistencia a menor nivel de resistencia', () => {
+    expect(ordered(dataOrder)).toEqual(outputOrderMax);
   });
 });

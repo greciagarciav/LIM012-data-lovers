@@ -1,24 +1,38 @@
-/* eslint-disable import/extensions */
-/* eslint-disable import/no-duplicates */
-import { searchName } from './data.js';
-import { FilterPokemonByResistantType } from './data.js';
-import { orderedMa } from './data.js';
-import { orderedMe } from './data.js';
-import { calculateEPS } from './data.js';
+import { searchName, FilterPokemonByResistantType, ordered, calculateEPS } from './data.js';
 import data from './data/pokemon/pokemon.js';
 
+// Sticky Menu Navbar
 const navbar = document.getElementById('navbar');
+const searchContainer = document.getElementById('search');
+const resultSearch = document.getElementById('ulSearch');
+const mediaQueriesMin = window.matchMedia('(min-width:360px)');
+const mediaQueriesMax = window.matchMedia('(max-width:760px)');
 const sticky = navbar.offsetTop;
 
 const stickyNavbar = () => {
   if (window.pageYOffset >= sticky) {
     navbar.classList.add('sticky');
+    resultSearch.classList.add('sticky');
+    resultSearch.style.position = 'fixed';
+    resultSearch.style.top = '65px';
+    searchContainer.classList.add('sticky');
+    searchContainer.style.position = 'relative';
   } else {
     navbar.classList.remove('sticky');
+    resultSearch.classList.remove('sticky');
+    resultSearch.style.position = 'absolute';
+    resultSearch.style.top = '';
+    searchContainer.classList.remove('sticky');
+    searchContainer.style.position = '';
+  }
+  if (mediaQueriesMin.matches && mediaQueriesMax.matches && window.pageYOffset >= sticky) {
+    resultSearch.style.top = '42px';
+  } else {
+    resultSearch.style.position = 'fixed';
   }
 };
 
-window.onscroll = () => { stickyNavbar(); };
+window.onscroll = () => stickyNavbar();
 
 const btnStart = document.getElementById('start');
 const searchPokemon = document.getElementById('searchPokemon');
@@ -170,7 +184,7 @@ const GetInfoModalHtml = (pokeId) => {
             ${Movements(pokeId)}
             <div class="eps-container">
               <div id="averageEps">
-                <h4 class="modal-h4">Promedio EPS total</h4>
+                <h4 class="modal-h4">Total EPS average</h4>
                 <h3 class="epsNumber">${calculateEPS(pokeId)}</h3>
               </div>
               <button id="btn-getEps" class="btn-eps">GET</button>
@@ -302,11 +316,11 @@ orderSelect.addEventListener('change', (event) => {
   const orderType = event.target.value;
   let listOrderPokemon = [];
   if (orderType === 'desc') {
-    listOrderPokemon = orderedMa(data.pokemon, orderType);
+    listOrderPokemon = ordered(data.pokemon, orderType);
     document.getElementById('root').innerHTML = ShowPokemons(listOrderPokemon);
     AssignCardEventClick();
   } else if (orderType === 'asc') {
-    listOrderPokemon = orderedMe(data.pokemon, orderType);
+    listOrderPokemon = ordered(data.pokemon, orderType).reverse();
     document.getElementById('root').innerHTML = ShowPokemons(listOrderPokemon);
     AssignCardEventClick();
   }

@@ -15,6 +15,11 @@ module.exports = {
     sourceType: 'module',
   },
   rules: {
-    "linebreak-style": 0
+    "linebreak-style": 0,
+    'no-nested-ternary': 0,
+    'import/extensions': 0,
+    'import/slides-no-duplicates': 0,
+    'max-len': 0,
+    'object-curly-newline':0,
   },
 };
