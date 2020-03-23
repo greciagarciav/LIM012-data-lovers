@@ -19,7 +19,6 @@ body{
 
 .logoPokemon{
     margin-top: 0.5rem;
-    margin-bottom: 0.5rem;
     height: 8rem;
     background-image: url(./img/logoPokemon.png);
     background-size: 95% 95%;
@@ -447,7 +446,6 @@ footer{
   height: 40px;
   background-color: #DAF5D4;
   color: #3E3939;
-  margin: 10px;
   padding: 1%;
   border-radius: 17px;
   border: 1px solid #3E3939;
@@ -456,13 +454,7 @@ footer{
   text-align-last:center;
   cursor: pointer;
 }
-/* Media query */
-@media (min-width: 768px) {
-  .logoPokemon{ 
-      height: 10rem;
-      background-size: 30% 70%;
-  }
-}
+
 .containerMenu{
   background: linear-gradient(to left, #24CCAA, #A2DB95);
   width: 100%;
@@ -500,6 +492,9 @@ a.hover{
 }
 
 @media screen and (min-width : 768px){
+  .logoPokemon{ 
+    background-size: 20% 70%;
+  }
   .ulMenu{
       display: flex;
       width: 100%;
