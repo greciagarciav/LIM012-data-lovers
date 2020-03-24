@@ -25,3 +25,8 @@ export const calculateEPS = (data) => {
   const averageTotalEps = (sumTotalEps / converterArrayEpsByMovement.length).toFixed(1);
   return averageTotalEps;
 };
+
+export const filterTypePokemon = (data, typePokemon) => {
+  const pokemonByType = data.filter((currentPokemon) => currentPokemon.type.includes(typePokemon).toLowerCase());
+  return pokemonByType;
+};
