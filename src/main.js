@@ -1,5 +1,11 @@
-import { searchName, FilterPokemonByResistantType, ordered, calculateEPS } from './data.js';
+import { searchName, FilterPokemonByResistantType, ordered, calculateEPS, FilterByLeague } from './data.js';
 import data from './data/pokemon/pokemon.js';
+
+// const dropdownContent = document.getElementById('dropdownContent');
+
+// dropdownContent.addEventListener('click', () => {
+
+// });
 
 // Sticky Menu Navbar
 const navbar = document.getElementById('navbar');
@@ -338,3 +344,13 @@ orderSelect.addEventListener('change', (event) => {
     AssignCardEventClick();
   }
 });
+
+
+const optionLeague = document.querySelectorAll('.dropdown-content a');
+
+optionLeague.forEach((league) => league.addEventListener('click', (event) => {
+  const leagueId = event.target.closest('a').id;
+  const leagueClicked = FilterByLeague(data.pokemon, leagueId);
+  document.getElementById('root').innerHTML = ShowPokemons(leagueClicked);
+  AssignCardEventClick();
+}));
