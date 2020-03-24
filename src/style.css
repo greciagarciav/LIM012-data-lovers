@@ -608,7 +608,7 @@ li.dropdown:hover {
   background-color: #a2db95;  
 }
 
-.dropdown-content {
+.dropdown-content, .dropdownTypePokemon {
   display: none;
   position: absolute;
   background-color: #f9f9f9;
@@ -617,17 +617,18 @@ li.dropdown:hover {
   z-index: 1;
 }
 
-.dropdown-content a {
+.dropdown-content a, .dropdownTypePokemon a{
   color: black;
   text-decoration: none;
   display: block;
   text-align: center;
+  font-size: 1rem;
 }
 
-.dropdown-content a:hover {
+.dropdown-content a:hover, .dropdownTypePokemon a:hover{
   background-color: #DAF5D4;
 }
 
-.dropdown:hover .dropdown-content {
+.dropdown:hover .dropdown-content, .dropdown:hover .dropdownTypePokemon  {
   display: block;
 }

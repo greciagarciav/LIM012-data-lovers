@@ -1,4 +1,4 @@
-import { searchName, FilterPokemonByResistantType, ordered, calculateEPS, FilterByLeague } from './data.js';
+import { searchName, FilterPokemonByResistantType, ordered, calculateEPS, FilterByLeague, filterTypePokemon } from './data.js';
 import data from './data/pokemon/pokemon.js';
 
 // const dropdownContent = document.getElementById('dropdownContent');
@@ -354,3 +354,13 @@ optionLeague.forEach((league) => league.addEventListener('click', (event) => {
   document.getElementById('root').innerHTML = ShowPokemons(leagueClicked);
   AssignCardEventClick();
 }));
+
+const dropdownTypePokemon = document.querySelectorAll('.dropdownTypePokemon a');
+dropdownTypePokemon.forEach((type) => {
+  type.addEventListener('click', (event) => {
+    const typeElementId = event.target.closest('a').id;
+    const getListTypePokemon = filterTypePokemon(data.pokemon, typeElementId);
+    document.getElementById('root').innerHTML = ShowPokemons(getListTypePokemon);
+    AssignCardEventClick();
+  });
+});
