@@ -1,4 +1,4 @@
-import { searchName, FilterPokemonByResistantType, calculateEPS, ordered } from '../src/data.js';
+import { searchName, FilterPokemonByResistantType, calculateEPS, ordered, FilterByLeague } from '../src/data.js';
 
 // Test de carga de datos en el buscador
 const data = [{
@@ -613,5 +613,14 @@ describe('ordered', () => {
   });
   it('debería retornar un array ordenado de pokemons de mayor nivel de resistencia a menor nivel de resistencia', () => {
     expect(ordered(dataOrder)).toEqual(outputOrderMax);
+  });
+});
+
+describe('FilterByLeague', () => {
+  it('is a function', () => {
+    expect(typeof FilterByLeague).toBe('function');
+  });
+  it('debería retornar un array de objetos filtrados por liga kanto', () => {
+    expect(FilterByLeague(data, 'kanto')).toEqual(output);
   });
 });

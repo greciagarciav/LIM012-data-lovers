@@ -539,3 +539,41 @@ a.hover{
     display : none;
   }
 }
+
+
+li a, .dropbtn {
+  display: inline-block;
+  text-align: center;
+  text-decoration: none;
+}
+
+li.dropdown {
+  display: inline-block;
+}
+li.dropdown:hover {
+  background-color: #a2db95;  
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 280px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  color: black;
+  text-decoration: none;
+  display: block;
+  text-align: center;
+}
+
+.dropdown-content a:hover {
+  background-color: #DAF5D4;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
