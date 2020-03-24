@@ -30,7 +30,7 @@ body{
     font-size: 22px;
 }
 .containerInput{
-    width: 70%;
+    width: 80%;
     height: 60%;
     box-sizing: border-box;
     padding: 0.5rem 0.5rem;
@@ -69,6 +69,7 @@ body{
 }
 #toogleMenu{
     cursor: pointer;
+    padding-top: 0.2rem;
 }
 
 .allPokemons{
@@ -191,7 +192,7 @@ footer{
   text-align: center;
   position: relative;
   width: 350px;
-  height: 520px;
+  min-height: 520px;
   border-radius: 20px;
   background-color: #F1FFEE;
   top: 90px;
