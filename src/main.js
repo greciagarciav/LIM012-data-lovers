@@ -14,7 +14,7 @@ const stickyNavbar = () => {
     navbar.classList.add('sticky');
     resultSearch.classList.add('sticky');
     resultSearch.style.position = 'fixed';
-    resultSearch.style.top = '65px';
+    resultSearch.style.top = '45px';
     searchContainer.classList.add('sticky');
     searchContainer.style.position = 'relative';
   } else {
@@ -23,12 +23,12 @@ const stickyNavbar = () => {
     resultSearch.style.position = 'absolute';
     resultSearch.style.top = '';
     searchContainer.classList.remove('sticky');
-    searchContainer.style.position = '';
+    searchContainer.style.position = 'relative';
   }
   if (mediaQueriesMin.matches && mediaQueriesMax.matches && window.pageYOffset >= sticky) {
     resultSearch.style.top = '42px';
   } else {
-    resultSearch.style.position = 'fixed';
+    // resultSearch.style.position = 'fixed';
   }
 };
 
@@ -37,22 +37,35 @@ window.onscroll = () => stickyNavbar();
 const btnStart = document.getElementById('start');
 const searchPokemon = document.getElementById('searchPokemon');
 
+// toogleMenu
+const toogleMenu = document.getElementById('toogleMenu');
+toogleMenu.addEventListener('click', () => {
+  const menuOption = document.getElementById('menuOption');
+  if (menuOption.style.display === 'block') {
+    menuOption.style.display = 'none';
+  } else {
+    menuOption.style.display = 'block';
+  }
+});
+
 // eslint-disable-next-line no-shadow
 const ShowPokemons = (pokemons) => {
   let mainView = '';
   pokemons.forEach((obj) => {
     let imgTypePokemon = '';
+    let letterTypePokemon = '';
     obj.type.forEach((currentPokemonType) => {
-      imgTypePokemon += `<img src="./img/types-pokemon/${currentPokemonType}.png"/>`;
+      imgTypePokemon += `<img class="imgType" src="./img/types-pokemon/${currentPokemonType}.png"/>`;
+      letterTypePokemon += `<span class="color-type-${currentPokemonType} letterType">${currentPokemonType.toUpperCase()}</span>`;
     });
 
     mainView += `
         <div id="${obj.num}" class="pokemon">
-          <img class="img1 containerImg" src="${obj.img}"/>
-          <p class="numId">${obj.num}</p> 
-          <p>${obj.name}</p>
+          <div class="containerImg"><img class="img1" src="${obj.img}"/></div>
+          <p class="numId"> N°${obj.num}</p> 
+          <p>${obj.name.toUpperCase()}</p>
           <div>${imgTypePokemon}</div>
-          <p>${obj.type}</p>
+          <div>${letterTypePokemon}</div>
         </div>`;
   });
   return mainView;
