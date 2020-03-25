@@ -276,6 +276,7 @@ const StartApp = () => {
   const dataHTML = ShowPokemons(data.pokemon);
   document.getElementById('root').innerHTML = dataHTML;
   AssignCardEventClick();
+  document.getElementById('fundWelcomePortal').style.display = 'none';
 };
 
 // Events
