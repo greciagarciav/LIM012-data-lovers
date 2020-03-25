@@ -1,4 +1,4 @@
-import { searchName, FilterPokemonByResistantType, ordered, calculateEPS, FilterByLeague, filterTypePokemon } from './data.js';
+import { searchName, FilterPokemonByResistantType, ordered, calculateEPS, FilterByLeague, orderedAlpha, filterTypePokemon } from './data.js';
 import data from './data/pokemon/pokemon.js';
 
 // const dropdownContent = document.getElementById('dropdownContent');
@@ -340,6 +340,14 @@ orderSelect.addEventListener('change', (event) => {
     AssignCardEventClick();
   } else if (orderType === 'asc') {
     listOrderPokemon = ordered(data.pokemon, orderType).reverse();
+    document.getElementById('root').innerHTML = ShowPokemons(listOrderPokemon);
+    AssignCardEventClick();
+  } else if (orderType === '0') {
+    listOrderPokemon = orderedAlpha(data.pokemon, orderType);
+    document.getElementById('root').innerHTML = ShowPokemons(listOrderPokemon);
+    AssignCardEventClick();
+  } else if (orderType === '1') {
+    listOrderPokemon = orderedAlpha(data.pokemon, orderType).reverse();
     document.getElementById('root').innerHTML = ShowPokemons(listOrderPokemon);
     AssignCardEventClick();
   }

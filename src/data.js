@@ -11,6 +11,7 @@ export const FilterPokemonByResistantType = (data, typeResistant) => {
 };
 
 export const ordered = (data) => data.sort((element1, element2) => (element1.resistant.length < element2.resistant.length ? 1 : -1));
+export const orderedAlpha = (data) => data.sort((element1, element2) => (element1.name > element2.name ? 1 : -1));
 
 export const calculateEPS = (data) => {
   const arrayEpsByMovement = [];

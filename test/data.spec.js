@@ -1,4 +1,4 @@
-import { searchName, FilterPokemonByResistantType, calculateEPS, ordered, FilterByLeague, filterTypePokemon } from '../src/data.js';
+import { searchName, FilterPokemonByResistantType, calculateEPS, ordered, FilterByLeague, orderedAlpha, filterTypePokemon } from '../src/data.js';
 
 // Test de carga de datos en el buscador
 const data = [{
@@ -995,6 +995,147 @@ const outputDataTypePokemon = [
   },
 ];
 
+const outputOrderMin = [{
+  num: '056',
+  name: 'mankey',
+  generation: {
+    num: 'generation i',
+    name: 'kanto',
+  },
+  resistant: [
+    'bug',
+    'rock',
+    'dark',
+  ],
+},
+{
+  num: '250',
+  name: 'ho-oh',
+  generation: {
+    num: 'generation ii',
+    name: 'johto',
+  },
+  resistant: [
+    'fighting',
+    'bug',
+    'grass',
+    'steel',
+    'fire',
+    'fairy',
+  ],
+},
+{
+  num: '248',
+  name: 'tyranitar',
+  generation: {
+    num: 'generation ii',
+    name: 'johto',
+  },
+  resistant: [
+    'psychic',
+    'dark',
+    'ghost',
+    'fire',
+    'poison',
+    'flying',
+    'normal',
+  ],
+}];
+
+const outputOrderNameAZ = [{
+  num: '250',
+  name: 'ho-oh',
+  generation: {
+    num: 'generation ii',
+    name: 'johto',
+  },
+  resistant: [
+    'fighting',
+    'bug',
+    'grass',
+    'steel',
+    'fire',
+    'fairy',
+  ],
+},
+{
+  num: '056',
+  name: 'mankey',
+  generation: {
+    num: 'generation i',
+    name: 'kanto',
+  },
+  resistant: [
+    'bug',
+    'rock',
+    'dark',
+  ],
+},
+{
+  num: '248',
+  name: 'tyranitar',
+  generation: {
+    num: 'generation ii',
+    name: 'johto',
+  },
+  resistant: [
+    'psychic',
+    'dark',
+    'ghost',
+    'fire',
+    'poison',
+    'flying',
+    'normal',
+  ],
+}];
+
+const outputOrderNameZA = [{
+  num: '248',
+  name: 'tyranitar',
+  generation: {
+    num: 'generation ii',
+    name: 'johto',
+  },
+  resistant: [
+    'psychic',
+    'dark',
+    'ghost',
+    'fire',
+    'poison',
+    'flying',
+    'normal',
+  ],
+},
+{
+  num: '056',
+  name: 'mankey',
+  generation: {
+    num: 'generation i',
+    name: 'kanto',
+  },
+  resistant: [
+    'bug',
+    'rock',
+    'dark',
+  ],
+},
+{
+  num: '250',
+  name: 'ho-oh',
+  generation: {
+    num: 'generation ii',
+    name: 'johto',
+  },
+  resistant: [
+    'fighting',
+    'bug',
+    'grass',
+    'steel',
+    'fire',
+    'fairy',
+  ],
+}];
+
 describe('searchName', () => {
   it('is a function', () => {
     expect(typeof searchName).toBe('function');
@@ -1029,6 +1170,9 @@ describe('ordered', () => {
   it('debería retornar un array ordenado de pokemons de mayor nivel de resistencia a menor nivel de resistencia', () => {
     expect(ordered(dataOrder)).toEqual(outputOrderMax);
   });
+  it('debería retornar un array ordenado de pokemons de menor nivel de resistencia a mayor nivel de resistencia', () => {
+    expect(ordered(dataOrder).reverse()).toEqual(outputOrderMin);
+  });
 });
 
 describe('FilterByLeague', () => {
@@ -1037,6 +1181,18 @@ describe('FilterByLeague', () => {
   });
   it('debería retornar un array de objetos filtrados por liga kanto', () => {
     expect(FilterByLeague(data, 'kanto')).toEqual(output);
+  });
+});
+
+describe('orderedAlpha', () => {
+  it('is a function', () => {
+    expect(typeof orderedAlpha).toBe('function');
+  });
+  it('debería retornar un array de objetos ordenados de A-Z', () => {
+    expect(orderedAlpha(dataOrder)).toEqual(outputOrderNameAZ);
+  });
+  it('debería retornar un array de objetos ordenados de Z-A', () => {
+    expect(orderedAlpha(dataOrder).reverse()).toEqual(outputOrderNameZA);
   });
 });
 
