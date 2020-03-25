@@ -31,3 +31,8 @@ export const FilterByLeague = (data, league) => {
   const leagueSelected = data.filter((pokemon) => pokemon.generation.name.includes(league));
   return leagueSelected;
 };
+
+export const filterTypePokemon = (data, typePokemon) => {
+  const pokemonByType = data.filter((currentPokemon) => currentPokemon.type.includes(typePokemon.toLowerCase()));
+  return pokemonByType;
+};

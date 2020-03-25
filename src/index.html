@@ -7,6 +7,7 @@
   <title>Data Lovers</title>
   <link rel="shortcut icon" type="image/png" href="img/favicon.png">
   <link rel="stylesheet" href="style.css">
+  <meta name="theme-color" content="#A2DB95" />
 </head>
 <body>
   <header>
@@ -14,17 +15,39 @@
     <div id="navbar" class="containerMenu">
       <nav class="menuResponsive"> 
         <div class="containerUlMenu">
-          <div id="toogleMenu">&#9776; Menu</div>
+          <div id="toogleMenu">&#9776;</div>
           <ul id="menuOption" class="ulMenu">
             <li><a href="">Home</a> </li>
             <li class="dropdown">
-              <a id="dropdownContent" class="dropbtn" href="">League</a>
+              <a id="dropdownContent" class="dropbtn" href="#">League</a>
               <div class="dropdown-content">
                 <a id="kanto" href="#">Kanto</a>
                 <a id="johto" href="#">Johto</a>
               </div>
             </li>
-            <li><a href="">Types</a> </li>
+            <li class="dropdown">
+              <a id="dropdownType" class="dropbtn" href="#">Type</a>
+              <div class="dropdownTypePokemon">
+                <a id="grass" href="#">Grass</a>
+                <a id="poison" href="#">Poison</a>
+                <a id="fire" href="#">Fire</a>
+                <a id="flying" href="#">Flying</a>
+                <a id="water" href="#">Water</a>
+                <a id="bug" href="#">Bug</a>
+                <a id="normal" href="#">Normal</a>
+                <a id="electric" href="#">Electric</a>
+                <a id="ground" href="#">Ground</a>
+                <a id="fighting" href="#">Fighting</a>
+                <a id="psychic" href="#">Psychic</a>
+                <a id="ghost" href="#">Ghost</a>
+                <a id="rock" href="#">Rock</a>
+                <a id="ice" href="#">Ice</a>
+                <a id="dragon" href="#">Dragon</a>
+                <a id="dark" href="#">Dark</a>
+                <a id="fairy" href="#">Fairy</a>
+                <a id="steel" href="#">Steel</a>
+              </div>
+            </li>
           </ul>
         </div>
         <div id="search" class="containerSearchPokemon">
@@ -59,7 +82,7 @@
               <option class="rock txt-white" value="Rock">rock</option>
               <option class="ice txt-white" value="Ice">ice</option>
               <option class="dragon txt-white" value="Dragon">dragon</option>
-              <option class="dark txt-white" value="Dark">dragon</option>
+              <option class="dark txt-white" value="Dark">dark</option>
               <option class="fairy txt-white" value="Fairy">fairy</option>
               <option class="steel txt-white" value="Steel">steel</option>
             </select>
