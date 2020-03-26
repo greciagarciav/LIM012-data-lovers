@@ -1,4 +1,4 @@
-import { searchName, FilterPokemonByResistantType, calculateEPS, ordered, FilterByLeague, orderedAlpha, filterTypePokemon } from '../src/data.js';
+import { searchName, FilterPokemonByResistantType, calculateEPS, ordered, FilterByLeague, orderedAlpha, filterTypePokemon, orderedNum } from '../src/data.js';
 
 // Test de carga de datos en el buscador
 const data = [{
@@ -1136,6 +1136,53 @@ const outputOrderNameZA = [{
   ],
 }];
 
+const outputNumPokedex = [{
+  num: '056',
+  name: 'mankey',
+  generation: {
+    num: 'generation i',
+    name: 'kanto',
+  },
+  resistant: [
+    'bug',
+    'rock',
+    'dark',
+  ],
+},
+{
+  num: '248',
+  name: 'tyranitar',
+  generation: {
+    num: 'generation ii',
+    name: 'johto',
+  },
+  resistant: [
+    'psychic',
+    'dark',
+    'ghost',
+    'fire',
+    'poison',
+    'flying',
+    'normal',
+  ],
+},
+{
+  num: '250',
+  name: 'ho-oh',
+  generation: {
+    num: 'generation ii',
+    name: 'johto',
+  },
+  resistant: [
+    'fighting',
+    'bug',
+    'grass',
+    'steel',
+    'fire',
+    'fairy',
+  ],
+}];
+
 describe('searchName', () => {
   it('is a function', () => {
     expect(typeof searchName).toBe('function');
@@ -1193,6 +1240,15 @@ describe('orderedAlpha', () => {
   });
   it('debería retornar un array de objetos ordenados de Z-A', () => {
     expect(orderedAlpha(dataOrder).reverse()).toEqual(outputOrderNameZA);
+  });
+});
+
+describe('orderedNum', () => {
+  it('is a function', () => {
+    expect(typeof orderedNum).toBe('function');
+  });
+  it('debería retornar un array de objetos ordenados por número de pokedex', () => {
+    expect(orderedNum(dataOrder)).toEqual(outputNumPokedex);
   });
 });
 
