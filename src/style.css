@@ -536,6 +536,87 @@ a.hover{
   background: rgba(201, 204, 36, 0.534);
 }
 
+li a, .dropbtn {
+  display: inline-block;
+  text-align: center;
+  text-decoration: none;
+}
+
+li.dropdown {
+  display: inline-block;
+}
+li.dropdown:hover {
+  background-color: #a2db95;  
+}
+
+.dropdown-content, .dropdownTypePokemon {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 280px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content a, .dropdownTypePokemon a{
+  color: black;
+  text-decoration: none;
+  display: block;
+  text-align: center;
+  font-size: 1rem;
+}
+
+.dropdown-content a:hover, .dropdownTypePokemon a:hover{
+  background-color: #DAF5D4;
+}
+
+.dropdown:hover .dropdown-content, .dropdown:hover .dropdownTypePokemon  {
+  display: block;
+}
+
+#fundWelcomePortal{
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 1000;
+  width: 100%;
+  height: 100%;
+  background: url(./img/fondoPortada.png);
+  background-repeat: no-repeat;
+  background-size: auto 130%;
+  background-position-x: center;
+  background-position-y: -2rem;
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+  flex-direction: column;
+
+}
+
+#titlePokemon{
+  text-align: center;
+}
+#titlePokemon img {
+  width: 90%;
+  margin-top: 3rem;
+}
+
+.textWelcome{
+  padding-top: 0.2rem;
+  padding-left: 2rem;
+  padding-right: 2rem;
+  font-size: 1.3rem;
+  text-align: justify;
+}
+#pokebolaButton{
+  text-align: center;
+}
+#pokebolaButton img{
+  width: 50%;
+  padding-top: 10px;
+  cursor: pointer;
+}
+
 @media screen and (min-width : 768px){
   .logoPokemon{ 
     background-size: 20% 70%;
@@ -592,43 +673,31 @@ a.hover{
   .select-filter{
     padding: 5px;
   }
+  #fundWelcomePortal{
+    background-size: 100% 100%;
+    background-position:inherit;
+  }
+  #titlePokemon img {
+    width: 30%;
+  }
+  .textWelcome{
+    padding-top: 1rem;
+    padding-left: 15rem;
+    padding-right: 16rem;
+    font-size: 1.2rem;
+    text-align: justify;
+  }
+  #pokebolaButton img{
+    width: 10%;
+  }
 }
 
-
-li a, .dropbtn {
-  display: inline-block;
-  text-align: center;
-  text-decoration: none;
-}
-
-li.dropdown {
-  display: inline-block;
-}
-li.dropdown:hover {
-  background-color: #a2db95;  
-}
-
-.dropdown-content, .dropdownTypePokemon {
-  display: none;
-  position: absolute;
-  background-color: #f9f9f9;
-  min-width: 280px;
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-  z-index: 1;
-}
-
-.dropdown-content a, .dropdownTypePokemon a{
-  color: black;
-  text-decoration: none;
-  display: block;
-  text-align: center;
-  font-size: 1rem;
-}
-
-.dropdown-content a:hover, .dropdownTypePokemon a:hover{
-  background-color: #DAF5D4;
-}
-
-.dropdown:hover .dropdown-content, .dropdown:hover .dropdownTypePokemon  {
-  display: block;
+@media screen and (min-width: 1024px){
+  .textWelcome {
+      padding-top: 1rem;
+      padding-left: 26rem;
+      padding-right: 27rem;
+      font-size: 1.9rem;
+      text-align: justify;
+  }
 }
