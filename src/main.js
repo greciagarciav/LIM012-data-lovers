@@ -350,6 +350,8 @@ orderSelect.addEventListener('change', (event) => {
     listOrderPokemon = orderedAlpha(data.pokemon, orderType).reverse();
     document.getElementById('root').innerHTML = ShowPokemons(listOrderPokemon);
     AssignCardEventClick();
+  } else if (orderType === 'ev') {
+    StartApp();
   }
 });
 
