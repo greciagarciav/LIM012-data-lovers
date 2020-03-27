@@ -579,6 +579,7 @@ const outputOrderMax = [{
     'dark',
   ],
 }];
+
 const dataTypePokemon = [
   {
     num: '025',
