@@ -34,7 +34,7 @@ const stickyNavbar = () => {
   if (mediaQueriesMin.matches && mediaQueriesMax.matches && window.pageYOffset >= sticky) {
     resultSearch.style.top = '42px';
   } else {
-    // resultSearch.style.position = 'fixed';
+    resultSearch.style.position = 'fixed';
   }
 };
 

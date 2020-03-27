@@ -42,9 +42,9 @@ body{
 }
 .containerSearchNamePokemon{
     background: #a2db95;
-    width: 53%;
+    width: 50%;
     margin:0;
-    margin-left: 4rem;
+    margin-left: 3rem;
     padding-left: 0;
     border-radius: 1rem;
     position: absolute;
@@ -661,7 +661,8 @@ li.dropdown:hover {
     margin-left: 1rem;
   }
   .containerSearchNamePokemon{
-    width: 80%;
+    margin-left: 4rem;
+    width: 20%;
   }
   #toogleMenu{
     display : none;
