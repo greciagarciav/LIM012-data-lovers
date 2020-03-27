@@ -2,15 +2,15 @@
 
 # Índice
 
-[1. Resumen del Proyecto](#1-resumen-del-proyecto)
-[2. Definición del Producto](#2-definición-del-producto)
-  [2.1. Usuarios ](#2.1-usuarios)
-  [2.2. Objetivos del producto](#2.2-objetivos-del-producto)
-  [2.3. Problemas que el prodcuto resuelve](#2.3-problemas-que-el-producto-resuelve)
-[3. Historias de Usuario](#3-historias-de-usuario)
-[4. Diseño UX](#4-cdiseño-ux)
-  [4.1. Prototipos de baja fidelidad ](#4.1-prototipos-de-baja-fidelidad)
-  [4.2. Prototipos de alta fidelidad](#4.2-prototipos-de-alta-fidelidad)
+* [1. Resumen del Proyecto](#1-resumen-del-proyecto)
+* [2. Definición del Producto](#2-definición-del-producto)
+  * [2.1. Usuarios ](#2.1-usuarios)
+  * [2.2. Objetivos del producto](#2.2-objetivos-del-producto)
+  * [2.3. Problemas que el prodcuto resuelve](#2.3-problemas-que-el-producto-resuelve)
+* [3. Historias de Usuario](#3-historias-de-usuario)
+* [4. Diseño UX](#4-cdiseño-ux)
+  * [4.1. Prototipos de baja fidelidad ](#4.1-prototipos-de-baja-fidelidad)
+  * [4.2. Prototipos de alta fidelidad](#4.2-prototipos-de-alta-fidelidad)
 
 ***
 ## 1. Resumen del Proyecto
@@ -52,7 +52,7 @@ Se construyó una aplicación web que le permitirá a los usuarios conocer sobre
 
    ### HU1: Bienvenida al usuario
    #### Historia de Usuario
-   Yo como usuario quiero recibir la bienvenida para saber de que trata la página.
+   * Yo como usuario quiero recibir la bienvenida para saber de que trata la página.
    #### Criterios de Aceptación
    * Se dará una bienvenida al usuario, informando sobre el tema de la página e invitando a ingresar.
    * El usuario podrá acceder al hacer click en el botón de Inicio
@@ -75,11 +75,10 @@ Se construyó una aplicación web que le permitirá a los usuarios conocer sobre
 
    ### HU3: Mostrar los datos a detalle de cada pokemon
    ##### Historia de usuario
-   Yo como: Usuario
-   Quiero: Obtener información a detalle de cada pokemon al hacer click en su imagen.
-   Para: Conocer sobre el peso, altura, huevo, caramelo, tipo, resistencia, debilidad, movimientos y evoluciones de cada pokemón.
+   * Yo como usuario quiero obtener información a detalle de cada pokemon al hacer click en su imagen.
+   para conocer sobre el peso, altura, huevo, caramelo, tipo, resistencia, debilidad, movimientos y evoluciones de cada pokemón.
    #### Criterios de Aceptación
-   *  El usuario visualiza la información detallada del pokemón en una interfaz superpuesta.
+   * El usuario visualiza la información detallada del pokemón en una interfaz superpuesta.
    * El usuario puede visualizar las evoluciones del pokemón y también puede acceder a su información a detalle.
    #### Definición de terminado
    * Responsive web design
@@ -88,9 +87,7 @@ Se construyó una aplicación web que le permitirá a los usuarios conocer sobre
 
    ### HU4: Un buscador para filtrar el pokemon por nombre.
    #### Historia de usuario
-   Yo como: Usuario
-   Quiero: buscar un pokemon por su nombre
-   Para: Facilitar la búsqueda.
+   * Yo como usuario quiero buscar un pokemon por su nombre para Facilitar la búsqueda.
    #### Criterios de aceptación
    * El usuario observa en la barra de navegación al lado derecho un buscador
    * El usuario escribe el nombre del pokemon que desea 
@@ -103,7 +100,7 @@ Se construyó una aplicación web que le permitirá a los usuarios conocer sobre
 
    ### HU5: Filtrar los pokemones por tipo de resistencia
    #### Historia de Usuario 
-   Yo como usuario, quiero obtener los pokemones resistentes a un determinado tipo de elemento para elegir a un pokemon para un combate.
+   * Yo como usuario, quiero obtener los pokemones resistentes a un determinado tipo de elemento para elegir a un pokemon para un combate.
    #### Criterios de Aceptación
    * El usuario observa un select en la parte superior izquierda
    * El usuario observa las opciones al tipo de resistencia en el select, y puede hacer click en un de ellos para obtener el de su preferencia.
@@ -116,7 +113,7 @@ Se construyó una aplicación web que le permitirá a los usuarios conocer sobre
 
    ### HU6: Ordenar los pokemones por nivel de resistencia.
    ##### Historia de Usuario 
-   Yo como usuario, quiero ordenar los pokemones de los más resistentes a los menos resistentes y viceversa para poder elegir a un pokemon fuerte para un combate.
+   * Yo como usuario, quiero ordenar los pokemones de los más resistentes a los menos resistentes y viceversa para poder elegir a un pokemon fuerte para un combate.
    #### Criterios de Aceptación
    * El usuario observa un select en la parte superior derecha de los pokemons.
    * El usuario encuentra en el select las opciones ordenar por mayor resistencia y ordenar por menor resistencia.
@@ -128,7 +125,7 @@ Se construyó una aplicación web que le permitirá a los usuarios conocer sobre
 
    ### HU7: Obtener la energía por movimiento de cada Pokemon.
    #### Historia de Usuario 
-   Yo como usuario, quiero obtener la energía por movimiento de los pokemons  para elegir a aquellos que no gasten mucha energía en una batalla.
+   * Yo como usuario, quiero obtener la energía por movimiento de los pokemons  para elegir a aquellos que no gasten mucha energía en una batalla.
    #### Criterios de Aceptación
    * El usuario al hacer click en la imagen de un pokemon observa en la sección de movimientos un botón para calcular la energía por movimiento.
    * El usuario al hacer click en el botón Calcular EPS obtiene lo solicitado de cada movimiento.
@@ -139,8 +136,7 @@ Se construyó una aplicación web que le permitirá a los usuarios conocer sobre
 
    ### HU8: Filtrar pokemons por Liga
    #### Historia de Usuario 
-   Yo como usuario quiero filtrar pokemons por liga
-   para diferenciar aquellos que son de liga kanto y liga johto
+   * Yo como usuario quiero filtrar pokemons por liga para diferenciar aquellos que son de liga kanto y liga johto
    #### Criterios de Aceptación
    * El usuario observa en el navegador la opción liga y al hacer click se despliega opción kanto y johto
    * El usuario al hacer click en las opciones, filtra los correspondientes a cada liga.
@@ -151,7 +147,7 @@ Se construyó una aplicación web que le permitirá a los usuarios conocer sobre
 
    ### HU9: Ordenar pokemons alfabeticamente
    #### Historia de Usuario 
-   Yo como usuario quiero ordenar alfabéticamente de la A-Z y de la Z-A a los pokemons para ubicarlos rápido si no sé cómo se escribe el nombre completo.
+   * Yo como usuario quiero ordenar alfabéticamente de la A-Z y de la Z-A a los pokemons para ubicarlos rápido si no sé cómo se escribe el nombre completo.
    #### Criterios de Aceptación
    * El usuario observa un select en la parte superior derecha y tiene las opciones ordenar de la A-Z y de Z-A
    * El usuario al hacer click en las opciones, ordena de manera que corresponda a la opción seleccionada.
@@ -162,8 +158,7 @@ Se construyó una aplicación web que le permitirá a los usuarios conocer sobre
 
    ### HU10: Filtrar pokemons por tipo de elemento
    #### Historia de Usuario 
-   Yo como usuario quiero filtrar pokemons por tipo de elemento
-   para conocer aquellos que son del elemento agua, aire, fuego, etc.
+   * Yo como usuario quiero filtrar pokemons por tipo de elemento para conocer aquellos que son del elemento agua, aire, fuego, etc.
    #### Criterios de Aceptación
    * El usuario observa en el navegador la opción tipo y al hacer click se despliega las opciones de los diferentes tipos de elementos
    * El usuario al hacer click en las opciones, filtra los correspondientes a cada tipo de elemento.
@@ -174,7 +169,7 @@ Se construyó una aplicación web que le permitirá a los usuarios conocer sobre
 
    ### HU11: Ordenar pokemons por evolución
    #### Historia de Usuario 
-   Yo como usuario quiero ordenar pokemons por evolución para conocer su cronología  evolutiva
+   * Yo como usuario quiero ordenar pokemons por evolución para conocer su cronología  evolutiva
    #### Criterios de Aceptación
    * El usuario observa en la parte superior derecha el select "ordenar por" y encuentra la opción ordenar por evolución
    * El usuario al hacer click en la opción, los pokemons se ordenan por evolución
