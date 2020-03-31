@@ -255,8 +255,9 @@ const ClosePokemonDetailWindowEvent = () => {
   });
 };
 
+let globalData = data.pokemon;
 const GetPokemonById = (id) => {
-  const getDataPokemon = data.pokemon.filter((poke) => (poke.num === id))[0];
+  const getDataPokemon = globalData.filter((poke) => (poke.num === id))[0];
   return getDataPokemon;
 };
 
@@ -273,7 +274,7 @@ const AssignCardEventClick = () => {
 };
 
 const StartApp = () => {
-  const dataHTML = ShowPokemons(data.pokemon);
+  const dataHTML = ShowPokemons(globalData);
   document.getElementById('root').innerHTML = dataHTML;
   AssignCardEventClick();
   document.getElementById('fundWelcomePortal').style.display = 'none';
@@ -325,9 +326,9 @@ searchPokemon.addEventListener('keyup', () => {
 const typeSelect = document.getElementById('pokemon-types');
 typeSelect.addEventListener('change', (event) => {
   const resistantType = event.target.value;
-  let listTypePokemon = [];
-  listTypePokemon = FilterPokemonByResistantType(data.pokemon, resistantType);
-  document.getElementById('root').innerHTML = ShowPokemons(listTypePokemon);
+  globalData = FilterPokemonByResistantType(data.pokemon, resistantType);
+  document.getElementById('root').innerHTML = ShowPokemons(globalData);
+  document.getElementById('pokemon-order').value = -1;
   AssignCardEventClick();
 });
 
@@ -336,34 +337,35 @@ orderSelect.addEventListener('change', (event) => {
   const orderType = event.target.value;
   let listOrderPokemon = [];
   if (orderType === 'desc') {
-    listOrderPokemon = ordered(data.pokemon, orderType);
+    listOrderPokemon = ordered(globalData, orderType);
     document.getElementById('root').innerHTML = ShowPokemons(listOrderPokemon);
     AssignCardEventClick();
   } else if (orderType === 'asc') {
-    listOrderPokemon = ordered(data.pokemon, orderType).reverse();
+    listOrderPokemon = ordered(globalData, orderType).reverse();
     document.getElementById('root').innerHTML = ShowPokemons(listOrderPokemon);
     AssignCardEventClick();
   } else if (orderType === '0') {
-    listOrderPokemon = orderedAlpha(data.pokemon, orderType);
+    listOrderPokemon = orderedAlpha(globalData, orderType);
     document.getElementById('root').innerHTML = ShowPokemons(listOrderPokemon);
     AssignCardEventClick();
   } else if (orderType === '1') {
-    listOrderPokemon = orderedAlpha(data.pokemon, orderType).reverse();
+    listOrderPokemon = orderedAlpha(globalData, orderType).reverse();
     document.getElementById('root').innerHTML = ShowPokemons(listOrderPokemon);
     AssignCardEventClick();
   } else if (orderType === 'ev') {
-    listOrderPokemon = orderedNum(data.pokemon, orderType);
+    listOrderPokemon = orderedNum(globalData, orderType);
     document.getElementById('root').innerHTML = ShowPokemons(listOrderPokemon);
     AssignCardEventClick();
   }
 });
 
-
 const optionLeague = document.querySelectorAll('.dropdown-content a');
 optionLeague.forEach((league) => league.addEventListener('click', (event) => {
   const leagueId = event.target.closest('a').id;
-  const leagueClicked = FilterByLeague(data.pokemon, leagueId);
-  document.getElementById('root').innerHTML = ShowPokemons(leagueClicked);
+  globalData = FilterByLeague(data.pokemon, leagueId);
+  document.getElementById('root').innerHTML = ShowPokemons(globalData);
+  document.getElementById('pokemon-types').value = -1;
+  document.getElementById('pokemon-order').value = -1;
   AssignCardEventClick();
 }));
 
@@ -371,8 +373,15 @@ const dropdownTypePokemon = document.querySelectorAll('.dropdownTypePokemon a');
 dropdownTypePokemon.forEach((type) => {
   type.addEventListener('click', (event) => {
     const typeElementId = event.target.closest('a').id;
-    const getListTypePokemon = filterTypePokemon(data.pokemon, typeElementId);
-    document.getElementById('root').innerHTML = ShowPokemons(getListTypePokemon);
+    globalData = filterTypePokemon(data.pokemon, typeElementId);
+    document.getElementById('root').innerHTML = ShowPokemons(globalData);
+    document.getElementById('pokemon-types').value = -1;
+    document.getElementById('pokemon-order').value = -1;
     AssignCardEventClick();
   });
+});
+
+const getPokemons = document.getElementById('begin');
+getPokemons.addEventListener('click', () => {
+  document.getElementById('root').innerHTML = ShowPokemons(data.pokemon);
 });

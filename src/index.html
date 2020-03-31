@@ -32,7 +32,7 @@
         <div class="containerUlMenu">
           <div id="toogleMenu">&#9776;</div>
           <ul id="menuOption" class="ulMenu">
-            <li><a href="">Home</a> </li>
+            <li><a id="begin" href="#">Home</a> </li>
             <li class="dropdown">
               <a id="dropdownContent" class="dropbtn" href="#">League</a>
               <div class="dropdown-content">
@@ -81,7 +81,7 @@
           <!--Listado de pokemones por tipos-->
           <div id="">
             <select id="pokemon-types" class="select-filter">
-              <option disabled selected>Resistant to</option>
+              <option value="-1" disabled selected>Resistant to</option>
               <option class="grass txt-white" value="Grass">grass</option>
               <option class="poison txt-white" value="Poison">poison</option>
               <option class="fire txt-white" value="Fire">fire</option>
@@ -104,7 +104,7 @@
           </div>
           <div id="">
               <select id="pokemon-order" class="select-filter">
-                <option disabled selected>Sort by</option>
+                <option value="-1" disabled selected>Sort by</option>
                 <option value="desc"> max resistance</option>
                 <option value="asc"> min resistance</option>
                 <option value="0">A-Z</option>
