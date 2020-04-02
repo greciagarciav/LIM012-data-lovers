@@ -6,6 +6,11 @@ import data from './data/pokemon/pokemon.js';
 // dropdownContent.addEventListener('click', () => {
 
 // });
+fetch('http://localhost:5500/src/data/pokemon/pokemon.json')
+  .then((resp) => resp.json())
+  .then((data) => {
+    console.log(data);
+  });
 
 // Sticky Menu Navbar
 const navbar = document.getElementById('navbar');
@@ -323,11 +328,22 @@ searchPokemon.addEventListener('keyup', () => {
   return true;
 });
 
+const amount = document.getElementById('amount-pokemons');
+const totalPokemonFiltered = (datos) => {
+  const amountPokemons = `Total pokemons: ${datos.length}`;
+  const h3Element = document.createElement('h4');
+  const textAmount = document.createTextNode(amountPokemons);
+  h3Element.appendChild(textAmount);
+  amount.appendChild(h3Element);
+};
+
 const typeSelect = document.getElementById('pokemon-types');
 typeSelect.addEventListener('change', (event) => {
+  amount.innerHTML = '';
   const resistantType = event.target.value;
   globalData = FilterPokemonByResistantType(data.pokemon, resistantType);
   document.getElementById('root').innerHTML = ShowPokemons(globalData);
+  totalPokemonFiltered(globalData);
   document.getElementById('pokemon-order').value = -1;
   AssignCardEventClick();
 });
@@ -361,9 +377,11 @@ orderSelect.addEventListener('change', (event) => {
 
 const optionLeague = document.querySelectorAll('.dropdown-content a');
 optionLeague.forEach((league) => league.addEventListener('click', (event) => {
+  amount.innerHTML = '';
   const leagueId = event.target.closest('a').id;
   globalData = FilterByLeague(data.pokemon, leagueId);
   document.getElementById('root').innerHTML = ShowPokemons(globalData);
+  totalPokemonFiltered(globalData);
   document.getElementById('pokemon-types').value = -1;
   document.getElementById('pokemon-order').value = -1;
   AssignCardEventClick();
@@ -372,9 +390,11 @@ optionLeague.forEach((league) => league.addEventListener('click', (event) => {
 const dropdownTypePokemon = document.querySelectorAll('.dropdownTypePokemon a');
 dropdownTypePokemon.forEach((type) => {
   type.addEventListener('click', (event) => {
+    amount.innerHTML = '';
     const typeElementId = event.target.closest('a').id;
     globalData = filterTypePokemon(data.pokemon, typeElementId);
     document.getElementById('root').innerHTML = ShowPokemons(globalData);
+    totalPokemonFiltered(globalData);
     document.getElementById('pokemon-types').value = -1;
     document.getElementById('pokemon-order').value = -1;
     AssignCardEventClick();
@@ -383,5 +403,11 @@ dropdownTypePokemon.forEach((type) => {
 
 const getPokemons = document.getElementById('begin');
 getPokemons.addEventListener('click', () => {
-  document.getElementById('root').innerHTML = ShowPokemons(data.pokemon);
+  amount.innerHTML = '';
+  globalData = data.pokemon;
+  document.getElementById('root').innerHTML = ShowPokemons(globalData);
+  totalPokemonFiltered(globalData);
+  document.getElementById('pokemon-types').value = -1;
+  document.getElementById('pokemon-order').value = -1;
+  AssignCardEventClick();
 });
