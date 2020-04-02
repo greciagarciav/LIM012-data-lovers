@@ -6,11 +6,24 @@ import data from './data/pokemon/pokemon.js';
 // dropdownContent.addEventListener('click', () => {
 
 // });
+let pok = [];
 fetch('http://localhost:5500/src/data/pokemon/pokemon.json')
-  .then((resp) => resp.json())
-  .then((data) => {
-    console.log(data);
+  .then((resp) => {
+    return resp.json();
+  })
+  .then((poke) => {
+    pok = poke.pokemon;
+    // console.log(pok);
+    logData();
+  })
+  .catch((error) => {
+    console.log('Something went wrong', error);
   });
+
+const logData = () => {
+  console.log(pok);
+  return pok;
+};
 
 // Sticky Menu Navbar
 const navbar = document.getElementById('navbar');
