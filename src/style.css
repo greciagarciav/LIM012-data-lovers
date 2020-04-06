@@ -256,12 +256,29 @@ footer{
   font-size: 11px;
 }
 
+.previous, .next {
+  width: 40px;
+  height: 40px;
+  position: relative;
+}
+
+.previous {
+  right: 30px;
+  cursor: pointer;
+}
+
+.next {
+  left: 30px;
+  cursor: pointer;
+}
+
 .modal__block4 {
   display: flex;
   flex-wrap: wrap;
   max-width: 300px;
   flex-direction: row;
   border-bottom: solid 0.1px;
+  justify-content: center;
 }
 
 .resist-weak-ctn {
@@ -282,6 +299,7 @@ footer{
   
 .movements-container {
   display: flex;
+  justify-content: center;
 }
 .sub-container-movements {
   padding: 0 5px;
@@ -370,8 +388,15 @@ footer{
 .evolution-img {
   height: 100px;
   width: 100px;
+  cursor: pointer;
+  transition: all ease-in .3s;
 }
-  
+
+.evolution-img:hover {
+  -webkit-transform:scale(1.3);
+  transform:scale(1.2);
+}
+
 .evolution-p {
   margin: 0;
   font-weight: 700;
@@ -417,6 +442,12 @@ footer{
 }
 
 .container-movements{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.container-evolution{
   display: flex;
   flex-direction: row;
   justify-content: center;

@@ -1,29 +1,15 @@
 import { searchName, FilterPokemonByResistantType, ordered, calculateEPS, FilterByLeague, orderedAlpha, filterTypePokemon, orderedNum } from './data.js';
-import data from './data/pokemon/pokemon.js';
+// import data from './data/pokemon/pokemon.js';
 
-// const dropdownContent = document.getElementById('dropdownContent');
+let globalData = [];
+const data = [];
 
-// dropdownContent.addEventListener('click', () => {
-
-// });
-let pok = [];
 fetch('http://localhost:5500/src/data/pokemon/pokemon.json')
-  .then((resp) => {
-    return resp.json();
-  })
-  .then((poke) => {
-    pok = poke.pokemon;
-    // console.log(pok);
-    logData();
-  })
-  .catch((error) => {
-    console.log('Something went wrong', error);
+  .then((resp) => resp.json())
+  .then((datos) => {
+    globalData = datos.pokemon;
+    data.pokemon = datos.pokemon;
   });
-
-const logData = () => {
-  console.log(pok);
-  return pok;
-};
 
 // Sticky Menu Navbar
 const navbar = document.getElementById('navbar');
@@ -72,7 +58,6 @@ toogleMenu.addEventListener('click', () => {
   }
 });
 
-// eslint-disable-next-line no-shadow
 const ShowPokemons = (pokemons) => {
   let mainView = '';
   pokemons.forEach((obj) => {
@@ -86,7 +71,7 @@ const ShowPokemons = (pokemons) => {
     mainView += `
         <div id="${obj.num}" class="pokemon">
           <div class="containerImg"><img class="img1" src="${obj.img}"/></div>
-          <p class="numId"> N°${obj.num}</p> 
+          <p class="numId"> N°${obj.num}</p>
           <p>${obj.name.toUpperCase()}</p>
           <div>${imgTypePokemon}</div>
           <div>${letterTypePokemon}</div>
@@ -148,24 +133,24 @@ const Evolution = (pokemon) => {
   if (pokemon.evolution['next-evolution'] === undefined && pokemon.evolution['prev-evolution'] === undefined) {
     templateEvolution += `
   <div class="evolution-each-container">
-    <h4 class="">This pokemon is not part of an evolutionary line</h4>    
+    <h4 class="">This pokemon is not part of an evolutionary line</h4>
   </div>
   `;
   }
   if (pokemon.evolution['next-evolution'] !== undefined) {
     templateEvolution += `
-  <div class="evolution-each-container">
+  <div id="${pokemon.evolution['next-evolution'][0].num}" class="evolution-each-container">
     <img class="evolution-img" src="https://www.serebii.net/pokemongo/pokemon/${pokemon.evolution['next-evolution'][0].num}.png"/>
-    <h4 class="evolution-h4">Next-evolution</h4>    
+    <h4 class="evolution-h4">Next-evolution</h4>
     <p class="evolution-p">#${pokemon.evolution['next-evolution'][0].num}</p>
     <p class="evolution-p">${pokemon.evolution['next-evolution'][0].name.toUpperCase()}</p>
   </div>
   `;
     if (pokemon.evolution['next-evolution'][0]['next-evolution'] !== undefined) {
       templateEvolution += `
-      <div class="evolution-each-container">
+      <div id="${pokemon.evolution['next-evolution'][0]['next-evolution'][0].num}"  class="evolution-each-container">
         <img class="evolution-img" src="https://www.serebii.net/pokemongo/pokemon/${pokemon.evolution['next-evolution'][0]['next-evolution'][0].num}.png"/>
-        <h4 class="evolution-h4">Next-evolution</h4>        
+        <h4 class="evolution-h4">Next-evolution</h4>
         <p class="evolution-p">#${pokemon.evolution['next-evolution'][0]['next-evolution'][0].num}</p>
         <p class="evolution-p">${pokemon.evolution['next-evolution'][0]['next-evolution'][0].name.toUpperCase()}</p>
       </div>
@@ -174,18 +159,18 @@ const Evolution = (pokemon) => {
   }
   if (pokemon.evolution['prev-evolution'] !== undefined) {
     templateEvolution += `
-      <div class="evolution-each-container">
+      <div id="${pokemon.evolution['prev-evolution'][0].num}" class="evolution-each-container">
         <img class="evolution-img" src="https://www.serebii.net/pokemongo/pokemon/${pokemon.evolution['prev-evolution'][0].num}.png"/>
-        <h4 class="evolution-h4">Prev-evolution</h4>        
+        <h4 class="evolution-h4">Prev-evolution</h4>
         <p class="evolution-p">#${pokemon.evolution['prev-evolution'][0].num}</p>
         <p class="evolution-p">${pokemon.evolution['prev-evolution'][0].name.toUpperCase()}</p>
       </div>
       `;
     if (pokemon.evolution['prev-evolution'][0]['prev-evolution'] !== undefined) {
       templateEvolution += `
-      <div class="evolution-each-container">
+      <div id="${pokemon.evolution['prev-evolution'][0]['prev-evolution'][0].num}" class="evolution-each-container">
         <img class="evolution-img" src="https://www.serebii.net/pokemongo/pokemon/${pokemon.evolution['prev-evolution'][0]['prev-evolution'][0].num}.png"/>
-        <h4 class="evolution-h4">Prev-evolution</h4>        
+        <h4 class="evolution-h4">Prev-evolution</h4>
         <p class="evolution-p">#${pokemon.evolution['prev-evolution'][0]['prev-evolution'][0].num}</p>
         <p class="evolution-p">${pokemon.evolution['prev-evolution'][0]['prev-evolution'][0].name.toUpperCase()}</p>
       </div>
@@ -200,24 +185,25 @@ const GetInfoModalHtml = (pokeId) => {
   infoModal += `
   <div class="modal-content flex">
     <span id="sp" class="close">&times;</span>
-        <div class="modal__block1">
+        <div id="${pokeId.num}" class="modal__block1">
           <img class="modal__block1-img" src="${pokeId.img}"/>
-          <p class="modal__block1-txt">#${pokeId.num}</p> 
+          <p class="modal__block1-txt">#${pokeId.num}</p>
           <p class="txt-modal-title">${pokeId.name.toUpperCase()}</p>
         </div>
       <div class="modalblock-2">
-        <div class="modal__block2"> 
+        <div class="modal__block2">
           <div class="block-2-sub-container"><p class="block2-p">${pokeId.size.weight}</p><p class="block2-p-title">WEIGHT</p></div>
           <div class="block-2-sub-container"><img class="modal__img-egg" src="./img/types-pokemon/${pokeId.type[0]}.png"/><p class="block2-p-title">${pokeId.type[0]}</p></div>
           <div class="block-2-sub-container"><img class="modal__img-egg" src="img/egg-lucky.png"/><p class="block2-p-title">${pokeId.egg}</p></div>
           <div><p class="block2-p">${pokeId.size.height}</p><p class="block2-p-title">HEIGHT</p></div>
-        </div> 
+        </div>
         <div class="modal__block4">
           ${ResistanceAndWeaknesses(pokeId)}
         </div>
         <div class="modal__block5">
           <h3 class="modal-h3">MOVEMENTS</h3>
           <div class='movements-container'>
+          <img id ="previous" class="previous" src="./img/previous.png">
             ${Movements(pokeId)}
             <div class="eps-container">
               <div id="averageEps">
@@ -227,11 +213,12 @@ const GetInfoModalHtml = (pokeId) => {
               <button id="btn-getEps" class="btn-eps">GET</button>
               <span>*Get the EPS</span>
             </div>
+          <img id="next" class="next" src="./img/next.png">
           </div>
         </div>
         <div class="modal__block6">
           <h3 class="modal-h3">EVOLUTION</h3>
-          <div class="container-movements">
+          <div class="container-evolution">
           ${Evolution(pokeId)}
           </div>
         <div/>
@@ -239,22 +226,6 @@ const GetInfoModalHtml = (pokeId) => {
     </div>
         `;
   return infoModal;
-};
-
-const ShowModalPokemon = (pokemon) => {
-  const modal = document.getElementById('modal');
-  modal.innerHTML = GetInfoModalHtml(pokemon);
-  const getEps = document.getElementById('btn-getEps');
-  getEps.addEventListener('click', () => {
-    const epsMovement = document.querySelectorAll('.epsMovement');
-    epsMovement.forEach((eps) => {
-      const epsElement = eps;
-      epsElement.style.display = 'block';
-    });
-    const averageEps = document.getElementById('averageEps');
-    averageEps.style.display = 'block';
-  });
-  modal.style.display = 'block';
 };
 
 const ClosePokemonDetailEvent = () => {
@@ -273,10 +244,89 @@ const ClosePokemonDetailWindowEvent = () => {
   });
 };
 
-let globalData = data.pokemon;
+// let globalData = data.pokemon;
 const GetPokemonById = (id) => {
   const getDataPokemon = globalData.filter((poke) => (poke.num === id))[0];
   return getDataPokemon;
+};
+
+const idRightLenght = (idString) => {
+  if (idString.length === 4) {
+    const arrIdString = idString.split('');
+    arrIdString.splice(0, 1);
+    return arrIdString.join('');
+  }
+  if (idString.length > 4) {
+    const arrIdString = idString.split('');
+    arrIdString.splice(0, 2);
+    return arrIdString.join('');
+  }
+  return idString;
+};
+
+const assignNextClickEvent = () => {
+  const nextPokemon = document.getElementById('next');
+  nextPokemon.addEventListener('click', () => {
+    const pokemonId = document.getElementsByClassName('modal__block1')[0].id;
+    const getNextPokemonId = parseInt(pokemonId, 10) + 1;
+    const nextPokemonId = `00${getNextPokemonId}`;
+    const rightId = idRightLenght(nextPokemonId);
+    if (rightId !== '252') {
+      const infoPokemon = GetPokemonById(rightId);
+      // eslint-disable-next-line no-use-before-define
+      ShowModalPokemon(infoPokemon);
+      ClosePokemonDetailEvent();
+      ClosePokemonDetailWindowEvent();
+    }
+  });
+};
+
+const assignPreviousClickEvent = () => {
+  document.getElementById('previous').addEventListener('click', () => {
+    const pokemonId = document.getElementsByClassName('modal__block1')[0].id;
+    const getPreviousPokemonId = parseInt(pokemonId, 10) - 1;
+    const previousPokemonId = `00${getPreviousPokemonId}`;
+    const rightId = idRightLenght(previousPokemonId);
+    if (rightId !== '000') {
+      const infoPokemon = GetPokemonById(rightId);
+      // eslint-disable-next-line no-use-before-define
+      ShowModalPokemon(infoPokemon);
+      ClosePokemonDetailEvent();
+      ClosePokemonDetailWindowEvent();
+    }
+  });
+};
+
+const ShowModalPokemon = (pokemon) => {
+  const modal = document.getElementById('modal');
+  modal.innerHTML = GetInfoModalHtml(pokemon);
+  const getEps = document.getElementById('btn-getEps');
+  getEps.addEventListener('click', () => {
+    const epsMovement = document.querySelectorAll('.epsMovement');
+    epsMovement.forEach((eps) => {
+      const epsElement = eps;
+      epsElement.style.display = 'block';
+    });
+    const averageEps = document.getElementById('averageEps');
+    averageEps.style.display = 'block';
+  });
+  modal.style.display = 'block';
+  // eslint-disable-next-line no-use-before-define
+  AssignCardEventClickEvolution();
+  assignNextClickEvent();
+  assignPreviousClickEvent();
+};
+
+const AssignCardEventClickEvolution = () => {
+  const listPokemon = document.querySelectorAll('.container-evolution .evolution-each-container');
+
+  listPokemon.forEach((itemPokemon) => itemPokemon.addEventListener('click', (event) => {
+    const pokemonId = event.target.closest('.evolution-each-container').id;
+    const pokemonClicked = GetPokemonById(pokemonId);
+    ShowModalPokemon(pokemonClicked);
+    ClosePokemonDetailEvent();
+    ClosePokemonDetailWindowEvent();
+  }));
 };
 
 const AssignCardEventClick = () => {
@@ -291,9 +341,19 @@ const AssignCardEventClick = () => {
   }));
 };
 
+const amount = document.getElementById('amount-pokemons');
+const totalPokemonFiltered = (datos) => {
+  const amountPokemons = `Total pokemons: ${datos.length}`;
+  const h3Element = document.createElement('h4');
+  const textAmount = document.createTextNode(amountPokemons);
+  h3Element.appendChild(textAmount);
+  amount.appendChild(h3Element);
+};
+
 const StartApp = () => {
   const dataHTML = ShowPokemons(globalData);
   document.getElementById('root').innerHTML = dataHTML;
+  totalPokemonFiltered(globalData);
   AssignCardEventClick();
   document.getElementById('fundWelcomePortal').style.display = 'none';
 };
@@ -340,15 +400,6 @@ searchPokemon.addEventListener('keyup', () => {
 
   return true;
 });
-
-const amount = document.getElementById('amount-pokemons');
-const totalPokemonFiltered = (datos) => {
-  const amountPokemons = `Total pokemons: ${datos.length}`;
-  const h3Element = document.createElement('h4');
-  const textAmount = document.createTextNode(amountPokemons);
-  h3Element.appendChild(textAmount);
-  amount.appendChild(h3Element);
-};
 
 const typeSelect = document.getElementById('pokemon-types');
 typeSelect.addEventListener('change', (event) => {
@@ -424,3 +475,18 @@ getPokemons.addEventListener('click', () => {
   document.getElementById('pokemon-order').value = -1;
   AssignCardEventClick();
 });
+
+const checkKey = (e) => {
+  // eslint-disable-next-line no-param-reassign
+  e = e || window.event;
+
+  if (e.keyCode === 37) {
+    document.getElementById('previous').click();
+  } else if (e.keyCode === 39) {
+    document.getElementById('next').click();
+  } else if (e.keyCode === 27) {
+    document.querySelector('.close').click();
+  }
+};
+
+document.onkeydown = checkKey;
