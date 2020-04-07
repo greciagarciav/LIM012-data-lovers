@@ -180,6 +180,13 @@ const Evolution = (pokemon) => {
   return templateEvolution;
 };
 
+// const StatsPokemon = (pokemon) => {
+//   let templateStats = '';
+//   templateStats += `
+//     ${pokemon.stats}
+//   `;
+// };
+
 const GetInfoModalHtml = (pokeId) => {
   let infoModal = '';
   infoModal += `
