@@ -4,7 +4,7 @@ import { searchName, FilterPokemonByResistantType, ordered, calculateEPS, Filter
 let globalData = [];
 const data = [];
 
-fetch('http://localhost:5501/src/data/pokemon/pokemon.json')
+fetch('../src/data/pokemon/pokemon.json')
   .then((resp) => resp.json())
   .then((datos) => {
     globalData = datos.pokemon;
