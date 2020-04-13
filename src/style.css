@@ -7,6 +7,10 @@ body{
     background-color: #f1ffee; 
 }
 
+.margin-top {
+  margin-top: 10px;
+}
+
 .height {
   height: 48px;
   margin: 0;
@@ -16,6 +20,12 @@ body{
   position: fixed;
   top: 0;
   width: 100%;
+}
+
+.container-canvas {
+  height: 40%;
+  position: relative;
+  border-bottom: solid 0.1px;
 }
 
 .containerLogoPokemon{
@@ -186,6 +196,7 @@ footer{
   justify-content: center;
   display: none;
   font-size: 0.4em;
+  overflow: auto;
 }
 
 .modal-content {
@@ -196,7 +207,7 @@ footer{
   text-align: center;
   position: relative;
   width: 350px;
-  min-height: 520px;
+  min-height: 820px;
   border-radius: 20px;
   background-color: #F1FFEE;
   top: 90px;
@@ -451,6 +462,14 @@ footer{
   display: flex;
   flex-direction: row;
   justify-content: center;
+}
+
+.btn-details {
+  margin-top: 10px;
+  border-radius: 5px;
+  color: white;
+  background-color: #24CCAA;
+  cursor: pointer;
 }
 
 /* selects filters */

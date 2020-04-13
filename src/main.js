@@ -4,7 +4,7 @@ import { searchName, FilterPokemonByResistantType, ordered, calculateEPS, Filter
 let globalData = [];
 const data = [];
 
-fetch('http://localhost:5500/src/data/pokemon/pokemon.json')
+fetch('http://localhost:5501/src/data/pokemon/pokemon.json')
   .then((resp) => resp.json())
   .then((datos) => {
     globalData = datos.pokemon;
@@ -180,33 +180,121 @@ const Evolution = (pokemon) => {
   return templateEvolution;
 };
 
-// const StatsPokemon = (pokemon) => {
-//   let templateStats = '';
-//   templateStats += `
-//     ${pokemon.stats}
-//   `;
-// };
+const StatsPokemon = (pokemon) => {
+  const arrStatsString = Object.values(pokemon.stats);
+  const arrStatsNumber = [];
+  arrStatsString.forEach((stat) => {
+    arrStatsNumber.push(parseInt(stat, 10));
+  });
+  arrStatsNumber.splice(3, 1);
+  return arrStatsNumber;
+};
+
+const BackGroundTypeColor = (pokemon) => {
+  const pokemonType = pokemon.type[0];
+  let rgba = '';
+  if (pokemonType === 'bug') {
+    rgba = 'rgba(163,199,48,1)';
+  } else if (pokemonType === 'dark') {
+    rgba = 'rgba(95,90,109,1)';
+  } else if (pokemonType === 'dragon') {
+    rgba = 'rgba(8,104,195,1)';
+  } else if (pokemonType === 'electric') {
+    rgba = 'rgba(244,214,78,1)';
+  } else if (pokemonType === 'fairy') {
+    rgba = 'rgba(238,151,226,1)';
+  } else if (pokemonType === 'fighting') {
+    rgba = 'rgba(207,64,102,1)';
+  } else if (pokemonType === 'fire') {
+    rgba = 'rgba(255,165,81,1)';
+  } else if (pokemonType === 'flying') {
+    rgba = 'rgba(162,187,235,1)';
+  } else if (pokemonType === 'ghost') {
+    rgba = 'rgba(85,104,174,1)';
+  } else if (pokemonType === 'grass') {
+    rgba = 'rgba(93,187,93,1)';
+  } else if (pokemonType === 'ground') {
+    rgba = 'rgba(215,124,77,1)';
+  } else if (pokemonType === 'ice') {
+    rgba = 'rgba(117,207,195,1)';
+  } else if (pokemonType === 'normal') {
+    rgba = 'rgba(145,153,161,1)';
+  } else if (pokemonType === 'poison') {
+    rgba = 'rgba(167,101,200,1)';
+  } else if (pokemonType === 'psychic') {
+    rgba = 'rgba(250,127,127,1)';
+  } else if (pokemonType === 'rock') {
+    rgba = 'rgba(204,190,142,1)';
+  } else if (pokemonType === 'steel') {
+    rgba = 'rgba(84,134,158,1)';
+  } else if (pokemonType === 'water') {
+    rgba = 'rgba(81, 147, 215, 1)';
+  }
+  return rgba;
+};
+
+const StatsCanvas = (pokemon, bgColor) => {
+  const ctx = document.getElementById('myChart').getContext('2d');
+  // eslint-disable-next-line no-undef
+  const myChart = new Chart(ctx, {
+    type: 'horizontalBar',
+    data: {
+      labels: ['base-attack', 'base-defense', 'base-stamina', 'max-hp'],
+      datasets: [{
+        label: 'Pokemon Stats',
+        data: pokemon,
+        borderColor: 'rgba(75, 192, 192, 1)',
+        backgroundColor: bgColor,
+      }],
+    },
+    options: {
+      legend: {
+        display: false,
+      },
+      tooltips: {
+        callbacks: {
+          label: function label(tooltipItem) {
+            return tooltipItem.xLabel;
+          },
+        },
+      },
+      scales: {
+        xAxes: [{
+          ticks: {
+            beginAtZero: true,
+          },
+        }],
+      },
+    },
+  });
+  return myChart;
+};
 
 const GetInfoModalHtml = (pokeId) => {
   let infoModal = '';
   infoModal += `
   <div class="modal-content flex">
     <span id="sp" class="close">&times;</span>
-        <div id="${pokeId.num}" class="modal__block1">
-          <img class="modal__block1-img" src="${pokeId.img}"/>
-          <p class="modal__block1-txt">#${pokeId.num}</p>
-          <p class="txt-modal-title">${pokeId.name.toUpperCase()}</p>
-        </div>
-      <div class="modalblock-2">
+
+      <div id="${pokeId.num}" class="modal__block1">
+        <img class="modal__block1-img" src="${pokeId.img}"/>
+        <p class="modal__block1-txt">#${pokeId.num}</p>
+        <p class="txt-modal-title">${pokeId.name.toUpperCase()}</p>
+      </div>
+
+      <div id="main-details" class="modalblock-2">
+
         <div class="modal__block2">
           <div class="block-2-sub-container"><p class="block2-p">${pokeId.size.weight}</p><p class="block2-p-title">WEIGHT</p></div>
           <div class="block-2-sub-container"><img class="modal__img-egg" src="./img/types-pokemon/${pokeId.type[0]}.png"/><p class="block2-p-title">${pokeId.type[0]}</p></div>
           <div class="block-2-sub-container"><img class="modal__img-egg" src="img/egg-lucky.png"/><p class="block2-p-title">${pokeId.egg}</p></div>
           <div><p class="block2-p">${pokeId.size.height}</p><p class="block2-p-title">HEIGHT</p></div>
         </div>
+
         <div class="modal__block4">
           ${ResistanceAndWeaknesses(pokeId)}
         </div>
+
         <div class="modal__block5">
           <h3 class="modal-h3">MOVEMENTS</h3>
           <div class='movements-container'>
@@ -223,14 +311,39 @@ const GetInfoModalHtml = (pokeId) => {
           <img id="next" class="next" src="./img/next.png">
           </div>
         </div>
+
+        <div class="modal__block2 margin-top">
+          <div class="block-2-sub-container"><p class="block2-p">${pokeId.generation.num}</p><p class="block2-p-title">GENERATION</p></div>
+          <div class="block-2-sub-container"><p class="block2-p">${pokeId.evolution.candy}</p><p class="block2-p-title">CANDY</p></div>
+          <div><p class="block2-p">${pokeId.generation.name}</p><p class="block2-p-title">LEAGUE</p></div>
+        </div>
+
+        <div class="modal__block2 margin-top">
+          <h4 class="">ABOUT</h4>
+          <div>${pokeId.about}</div>
+        </div>
+
+        <div class="modal__block2 margin-top">
+          <div class="block-2-sub-container"><p class="block2-p">${pokeId.encounter['base-flee-rate']}</p><p class="block2-p-title">FLEE RATE</p></div>
+          <div class="block-2-sub-container"><p class="block2-p">${pokeId.encounter['base-capture-rate']}</p><p class="block2-p-title">CAPTURE RATE</p></div>
+          <div><p class="block2-p">${pokeId['spawn-chance']}</p><p class="block2-p-title">SPAWN CHANCE</p></div>
+        </div>
+
+        <section class="container-canvas">
+        <h3 class="modal-h3">STATISTICS</h3>
+        <canvas id="myChart"></canvas>
+        </section>
+
         <div class="modal__block6">
           <h3 class="modal-h3">EVOLUTION</h3>
           <div class="container-evolution">
           ${Evolution(pokeId)}
           </div>
         <div/>
-      <div/>
+        
     </div>
+
+  </div>
         `;
   return infoModal;
 };
@@ -307,6 +420,9 @@ const assignPreviousClickEvent = () => {
 const ShowModalPokemon = (pokemon) => {
   const modal = document.getElementById('modal');
   modal.innerHTML = GetInfoModalHtml(pokemon);
+  const arr = StatsPokemon(pokemon);
+  const typeBackGround = BackGroundTypeColor(pokemon);
+  StatsCanvas(arr, typeBackGround);
   const getEps = document.getElementById('btn-getEps');
   getEps.addEventListener('click', () => {
     const epsMovement = document.querySelectorAll('.epsMovement');
