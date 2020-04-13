@@ -47,7 +47,7 @@ window.onscroll = () => stickyNavbar();
 const btnStart = document.getElementById('start');
 const searchPokemon = document.getElementById('searchPokemon');
 
-// toogleMenu
+// toogleMenu hamburguesa
 const toogleMenu = document.getElementById('toogleMenu');
 toogleMenu.addEventListener('click', () => {
   const menuOption = document.getElementById('menuOption');
